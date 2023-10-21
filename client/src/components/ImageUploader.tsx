@@ -17,7 +17,7 @@ export default function ImageUploader() {
         <input {...getInputProps()} />
         <img src="/doc-icon.svg" />
         <button
-          className="btn btn-primary bg-primary-orange min-w-min cursor-pointer text-white hover:bg-white hover:text-primary-orange shadow border-none mt-8 rounded-2xl pr-7 pl-7"
+          className="btn btn-primary normal-case bg-primary-orange min-w-min cursor-pointer text-white hover:bg-white hover:text-primary-orange shadow border-none mt-8 rounded-2xl pr-7 pl-7 text-xl"
           type="button"
           onClick={open}
         >

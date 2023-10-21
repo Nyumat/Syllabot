@@ -6,20 +6,21 @@ export default function Home() {
     <>
       <NavBar />
       <div className="container mx-auto pb-9">
-        <h1 className="text-6xl font-bold text-center mt-10">
+        <h1 className="text-5xl font-bold text-center mt-10">
           Your Syllabus, Simplified
         </h1>
-        <h3 className="text-3xl text-center font-light mt-5">
+        <h3 className="text-2xl text-center font-light mt-2">
           Upload your first syllabus or <a href="#">sign in</a>
         </h3>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-12">
-          <div className="flex justify-center items-center m-8 shadow-xl rounded-3xl">
+        <div className="flex flex-col md:flex-row items-center justify-center mt-0">
+          <div className="flex justify-center items-center m-4 p-8 md:w-96 md:h-96 shadow-xl rounded-3xl">
             <ImageUploader />
           </div>
-          <div className="flex justify-center items-center m-8 shadow-xl rounded-3xl p-5">
+          <div className="mx-4 text-3xl font-normal">or</div>
+          <div className="flex justify-center items-center m-4 p-8 md:w-96 md:h-96 shadow-xl rounded-3xl">
             <textarea
-              className="textarea w-full h-96 bg-white border-0 text-lg focus:outline-none"
+              className="textarea w-full h-full bg-white border-0 text-lg focus:outline-none"
               placeholder="Copy and Paste Your Syllabus Text"
             ></textarea>
           </div>

@@ -23,7 +23,7 @@ export function SignIn() {
   return (
     <>
       <button
-        className="btn btn-primary bg-primary-orange min-w-min cursor-pointer border-none shadow m-2 text-white hover:bg-white hover:text-primary-orange"
+        className="min-w-min cursor-pointer border-none m-2 mr-8 hover:text-primary-orange text-lg font-bold"
         onClick={(e) => handleClicked(e)}
       >
         Log In
@@ -53,10 +53,10 @@ export function SignUp() {
   return (
     <>
       <button
-        className="btn btn-primary bg-primary-orange min-w-min cursor-pointer text-white border-none hover:bg-white hover:text-primary-orange"
+        className="btn btn-primary bg-primary-orange min-w-min cursor-pointer text-white border-none hover:bg-white hover:text-primary-orange text-base normal-case"
         onClick={(e) => handleClicked(e)}
       >
-        Sign up
+        Sign Up
       </button>
     </>
   );

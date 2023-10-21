@@ -20,14 +20,15 @@ export default function Home() {
           <div className="mx-4 text-3xl font-normal">or</div>
           <div className="flex justify-center items-center m-4 p-8 md:w-96 md:h-96 shadow-xl rounded-3xl">
             <textarea
-              className="textarea w-full h-full bg-white border-0 text-lg focus:outline-none"
+              className="textarea w-full h-full border-0 text-lg focus:outline-none"
+              style={{resize: 'none'}}
               placeholder="Copy and Paste Your Syllabus Text"
             ></textarea>
           </div>
         </div>
 
         <div className="flex justify-center items-center ">
-          <button className="btn btn-primary bg-primary-orange min-w-min cursor-pointer text-white hover:text-primary-orange border-none shadow m-2">
+          <button className="btn btn-primary bg-primary-orange min-w-min cursor-pointer mt-6 text-white hover:text-primary-orange border-none shadow m-2">
             Analyze my Syllabus
           </button>
         </div>

@@ -5,6 +5,7 @@ import {
     SignedIn,
     SignedOut,
 } from "@clerk/clerk-react";
+import UserProfileIcon from "./modals/UserProfileIcon";
 
 const NavBar: React.FC = () => {
     return (
@@ -22,7 +23,7 @@ const NavBar: React.FC = () => {
                     </a>
                 </li>
                 <SignedIn>
-                    <img src="/user-icon.svg" width={40}/>
+                    <UserProfileIcon/>
                 </SignedIn>
                 <SignedOut>
                     <li>

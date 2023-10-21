@@ -1,16 +1,25 @@
+import { ClerkProvider } from "@clerk/clerk-react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Manage from "./pages/Manage";
 import Processing from "./pages/Processing";
 
+if (!import.meta.env.VITE_CLERK_PUBLISHABLE_KEY) {
+  throw new Error("Missing Publishable Key");
+}
+
+const clerkPubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+
 function App() {
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/processing" element={<Processing />} />
-        <Route path="/manage" element={<Manage />} />
-      </Routes>
+      <ClerkProvider publishableKey={clerkPubKey}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/processing" element={<Processing />} />
+          <Route path="/manage" element={<Manage />} />
+        </Routes>
+      </ClerkProvider>
     </>
   );
 }

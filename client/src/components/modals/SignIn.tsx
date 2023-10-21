@@ -20,20 +20,9 @@ export default function SignIn() {
 
   return (
     <>
-      <div className="card w-96 bg-base-100 shadow-xl">
-        <figure className="px-10 pt-10">
-          <img src="/lightMode.svg" alt="canvas logo" className="rounded-xl" />
-        </figure>
-        <div className="card-body items-center text-center">
-          <h2 className="card-title text-2xl font-bold">Welcome back!</h2>
-          <p className="mb-4 text-base-content">
-            Sign in to your account to continue
-          </p>
-          <button className="btn btn-primary" onClick={(e) => handleClicked(e)}>
-            Sign in
-          </button>
-        </div>
-      </div>
+        <button className="btn btn-primary bg-primary-orange min-w-min cursor-pointer text-white" onClick={(e) => handleClicked(e)}>
+          Sign in
+        </button>
     </>
   );
 }

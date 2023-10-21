@@ -1,9 +1,10 @@
-import SignIn from "../components/modals/SignIn";
+import NavBar from "../components/NavBar";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <SignIn />
-    </div>
+    <>
+      <NavBar/>
+
+    </>
   );
 }

@@ -8,3 +8,21 @@ body {
   font-family: "Roboto", sans-serif;
   background-color: #fdfdff;
 }
+.cl-formButtonPrimary {
+  font-size: 14px;
+  text-transform: none;
+  background-color: #dc4405;
+  --accentDark: #f94b00;
+}
+
+.cl-footerActionLink {
+  color: #dc4405;
+}
+
+.cl-footerActionLink:hover {
+  color: #f94b00;
+}
+
+.cl-internal-b3fm6y {
+  background-color: #dc4405;
+}

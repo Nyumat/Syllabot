@@ -22,7 +22,9 @@ const NavBar: React.FC = () => {
                     </a>
                 </li>
                 <SignedIn>
-                    <UserButton afterSignOutUrl={"/"}/>
+                    <div className="flex flex-col justify-center">
+                        <UserButton afterSignOutUrl={"/"} />
+                    </div>
                 </SignedIn>
                 <SignedOut>
                     <li>

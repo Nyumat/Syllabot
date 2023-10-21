@@ -1,15 +1,18 @@
 import NavBar from "../components/NavBar";
-import CourseBtn from "../components/buttons/CourseBtn";
 import FileManageBtn from "../components/buttons/FileManageBtn";
 import ImageUploader from "../components/ImageUploader";
-import { FaPlus } from "react-icons/fa";
+
 import {
   SignedIn,
   SignedOut,
 } from "@clerk/clerk-react";
 import {Navigate} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import CourseSidePanel from "../components/CourseSidePanel";
 
 export default function Manage() {
+  const navigate = useNavigate();
+
   return (
     <>
       <SignedIn>
@@ -25,6 +28,7 @@ export default function Manage() {
             <button
               className="normal-case text-lg pl-8 pr-8 w-10pc btn btn-primary mt-5 mx-8 bg-primary-orange min-w-min cursor-pointer border-none shadow text-white hover:bg-white hover:text-primary-orange col-span-2"
               style={{ justifySelf: "right" }}
+              onClick={() => navigate("/chat")}
             >
               Done!
             </button>
@@ -38,7 +42,7 @@ export default function Manage() {
         </button>
       </div> */}
           <div className="grid grid-cols-3 gap-4">
-            <CourseSidePanel />
+            <CourseSidePanel addCourseButton userClicked={(id: string) => console.log(id)} userClickedManageOrAdd={() => null}/>
             <CourseInfo />
           </div>
         </div>
@@ -47,28 +51,6 @@ export default function Manage() {
         <Navigate to='../'/>
       </SignedOut>
     </>
-  );
-}
-
-function CourseSidePanel() {
-  return (
-    <div className="col-span-1">
-      <div className="text-3xl font-semibold text-start pl-8 select-none">
-        Courses
-      </div>
-      <div className="flex flex-col shadow-lg rounded-lg ml-8 mt-3">
-        <CourseBtn coursename={"Course name 1 "} />
-        <CourseBtn coursename={"Course name 2"} />
-        <CourseBtn coursename={"Course name 3"} />
-        <CourseBtn coursename={"Course name 4"} />
-        <button
-          className="flex flex-row items-center
-         justify-between px-6 pt-3 pb-3 text-start text-xl font-medium bg-transparent border-solid hover:bg-primary-grey transition ease-linear border-b focus:bg-primary-grey focus:text-primary-orange"
-        >
-          Add a Course <FaPlus />
-        </button>
-      </div>
-    </div>
   );
 }
 

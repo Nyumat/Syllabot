@@ -9,7 +9,7 @@ export function SignIn() {
 
   useEffect(() => {
     if (isLoaded && isSignedIn) {
-      navigate("/manage");
+      navigate("/chat");
     }
   }, [isLoaded, isSignedIn, navigate]);
 
@@ -39,7 +39,7 @@ export function InTextSignIn() {
 
   useEffect(() => {
     if (isLoaded && isSignedIn) {
-      navigate("/manage");
+      navigate("/chat");
     }
   }, [isLoaded, isSignedIn, navigate]);
 
@@ -64,7 +64,7 @@ export function SignUp() {
 
   useEffect(() => {
     if (isLoaded && isSignedIn) {
-      navigate("/manage");
+      navigate("/chat");
     }
   }, [isLoaded, isSignedIn, navigate]);
 

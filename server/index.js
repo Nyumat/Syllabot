@@ -4,6 +4,10 @@ import express from 'express';
 import rateLimit from 'express-rate-limit';
 import mongoose from 'mongoose';
 
+// Routes
+import indexDocs from "./routes/indexDocs.js";
+import queryDocs from "./routes/queryDocs.js";
+
 // Middleware
 import tracker from './middleware/tracker.js';
 
@@ -47,6 +51,10 @@ mongoose
 
 // Routes
 // app.use('/api', limiter);
+app.use('/api/index', indexDocs);
+app.use('/api/query', queryDocs);-
+
+
 
 // Default Route
 app.get('/', (req, res) => {

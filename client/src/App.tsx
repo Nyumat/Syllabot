@@ -1,6 +1,6 @@
 import { ClerkProvider } from "@clerk/clerk-react";
 import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
+import Landing from "./pages/Landing";
 import Manage from "./pages/Manage";
 import Processing from "./pages/Processing";
 
@@ -15,7 +15,7 @@ function App() {
     <>
       <ClerkProvider publishableKey={clerkPubKey}>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Landing />} />
           <Route path="/processing" element={<Processing />} />
           <Route path="/manage" element={<Manage />} />
         </Routes>

@@ -2,7 +2,7 @@ import ImageUploader from "../components/ImageUploader";
 import NavBar from "../components/NavBar";
 import { InTextSignIn } from "../components/modals/SignIn";
 
-export default function Home() {
+export default function Landing() {
   return (
     <>
       <NavBar />

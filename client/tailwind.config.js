@@ -16,9 +16,11 @@ export default {
         body: ["Roboto"],
       },
       width: {
+        "36pc": "36%",
         "30pc": "30%",
         "25pc": "25%",
         "20pc": "20%",
+        "10pc": "10%",
       },
 
       inset: {

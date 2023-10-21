@@ -13,16 +13,21 @@ export default function SignIn() {
     }
   }, [isLoaded, isSignedIn, navigate]);
 
-  const handleClicked = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClicked = async (
+    e: React.MouseEvent<HTMLButtonElement>
+  ) => {
     e.preventDefault();
     clerk.openSignIn();
   };
 
   return (
     <>
-        <button className="btn btn-primary bg-primary-orange min-w-min cursor-pointer text-white hover:bg-primary-orange" onClick={(e) => handleClicked(e)}>
-          Sign in
-        </button>
+      <button
+        className="btn btn-primary bg-primary-orange min-w-min cursor-pointer border-none shadow m-2 text-white hover:bg-white hover:text-primary-orange"
+        onClick={(e) => handleClicked(e)}
+      >
+        Sign in
+      </button>
     </>
   );
 }

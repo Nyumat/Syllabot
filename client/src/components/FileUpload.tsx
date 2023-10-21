@@ -10,14 +10,16 @@ function DragDrop() {
     setFile(file);
   };
 
-  return <FileUploader 
-          className="min-h-full w-full bg-slate-600 rounded-xl p-5"
-          handleChange={handleChange} 
-          name="file" 
-          types={fileTypes} 
-          multiple={false}
-          label="Upload Syllabus or Drop a PDF here"
-          />;
+  return (
+    <FileUploader
+      className="min-h-full w-full bg-slate-600 rounded-xl p-5"
+      handleChange={handleChange}
+      name="file"
+      types={fileTypes}
+      multiple={false}
+      label="Upload Syllabus or Drop a PDF here"
+    />
+  );
 }
 
 export default DragDrop;

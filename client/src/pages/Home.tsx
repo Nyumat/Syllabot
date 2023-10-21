@@ -1,9 +1,9 @@
 import NavBar from "../components/NavBar";
 import {
     useAuth,
-    useClerk
+    useClerk,
+    SignIn
 } from "@clerk/clerk-react";
-import { Navigate } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import CourseSidePanel from "../components/CourseSidePanel";
 

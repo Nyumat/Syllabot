@@ -1,11 +1,10 @@
 import React from "react";
 import { SignIn, SignUp } from "../components/modals/SignIn";
 import {
-    ClerkProvider,
     SignedIn,
     SignedOut,
+    UserButton,
 } from "@clerk/clerk-react";
-import UserProfileIcon from "./modals/UserProfileIcon";
 
 const NavBar: React.FC = () => {
     return (
@@ -23,7 +22,7 @@ const NavBar: React.FC = () => {
                     </a>
                 </li>
                 <SignedIn>
-                    <UserProfileIcon/>
+                    <UserButton afterSignOutUrl={"/"}/>
                 </SignedIn>
                 <SignedOut>
                     <li>

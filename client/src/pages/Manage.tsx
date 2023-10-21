@@ -3,26 +3,33 @@ import CourseBtn from "../components/buttons/CourseBtn";
 import FileManageBtn from "../components/buttons/FileManageBtn";
 import ImageUploader from "../components/ImageUploader";
 import { FaPlus } from "react-icons/fa";
+import {
+  SignedIn,
+  SignedOut,
+} from "@clerk/clerk-react";
+import {Navigate} from 'react-router-dom';
 
 export default function Manage() {
   return (
-    <div className="text-center items-center justify-center content-center h-full font-body">
-      <NavBar />
-      <div className="grid grid-cols-3 gap-4">
-        <div
-          className="text-4xl font-bold select-none col-span-1 mt-5 px-8"
-          style={{ justifySelf: "left" }}
-        >
-          Manage Your Classes
-        </div>
-        <button
-          className="normal-case text-lg pl-8 pr-8 w-10pc btn btn-primary mt-5 mx-8 bg-primary-orange min-w-min cursor-pointer border-none shadow text-white hover:bg-white hover:text-primary-orange col-span-2"
-          style={{ justifySelf: "right" }}
-        >
-          Done!
-        </button>
-      </div>
-      {/* <div className="text-center mt-4 flex flex-row justify-between px-8">
+    <>
+      <SignedIn>
+        <div className="text-center items-center justify-center content-center h-full font-body">
+          <NavBar />
+          <div className="grid grid-cols-3 gap-4">
+            <div
+              className="text-4xl font-bold select-none col-span-1 mt-5 px-8"
+              style={{ justifySelf: "left" }}
+            >
+              Manage Your Classes
+            </div>
+            <button
+              className="normal-case text-lg pl-8 pr-8 w-10pc btn btn-primary mt-5 mx-8 bg-primary-orange min-w-min cursor-pointer border-none shadow text-white hover:bg-white hover:text-primary-orange col-span-2"
+              style={{ justifySelf: "right" }}
+            >
+              Done!
+            </button>
+          </div>
+          {/* <div className="text-center mt-4 flex flex-row justify-between px-8">
         <p className="text-5xl font-bold self-center select-none">
           Manage Your Classes
         </p>
@@ -30,11 +37,16 @@ export default function Manage() {
           Done!
         </button>
       </div> */}
-      <div className="grid grid-cols-3 gap-4">
-        <CourseSidePanel />
-        <CourseInfo />
-      </div>
-    </div>
+          <div className="grid grid-cols-3 gap-4">
+            <CourseSidePanel />
+            <CourseInfo />
+          </div>
+        </div>
+      </SignedIn>
+      <SignedOut>
+        <Navigate to='../'/>
+      </SignedOut>
+    </>
   );
 }
 

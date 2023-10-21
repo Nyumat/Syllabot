@@ -16,7 +16,7 @@ export default function Home() {
 
         <div className="flex flex-col md:flex-row items-center justify-center mt-1">
           <div className="flex justify-center items-center m-4 p-8 md:w-96 md:h-96 shadow-xl rounded-3xl">
-            <ImageUploader />
+            <ImageUploader mini={true} />
           </div>
           <div className="mx-3 text-2xl font-normal">or</div>
           <div className="flex justify-center items-center m-4 p-8 md:w-96 md:h-96 shadow-xl rounded-3xl">

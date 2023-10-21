@@ -15,6 +15,15 @@ export default {
       fontFamily: {
         body: ["Roboto"],
       },
+      width: {
+        "30pc": "30%",
+        "25pc": "25%",
+        "20pc": "20%",
+      },
+
+      inset: {
+        "30pc": "30%",
+      },
     },
   },
   daisyui: {

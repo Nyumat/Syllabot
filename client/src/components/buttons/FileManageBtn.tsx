@@ -1,6 +1,11 @@
 import { FaTrashAlt } from "react-icons/fa";
 
-export default function FileManageBtn({ filename }) {
+type FileButtonType = {
+  filename: string;
+  onClick?: (id: string) => any;
+};
+
+export default function FileManageBtn({ filename }: FileButtonType) {
   return (
     <>
       <div className="pl-6 pr-6 pt-2 pb-2 font-medium ml-8 w-36pc bg-white shadow-md text-lg rounded-xl select-none mt-3">

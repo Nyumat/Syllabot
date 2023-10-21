@@ -1,12 +1,8 @@
 import NavBar from "../components/NavBar";
 import FileManageBtn from "../components/buttons/FileManageBtn";
 import ImageUploader from "../components/ImageUploader";
-
-import {
-  SignedIn,
-  SignedOut,
-} from "@clerk/clerk-react";
-import {Navigate} from 'react-router-dom';
+import { SignedIn, SignedOut } from "@clerk/clerk-react";
+import { Navigate } from "react-router-dom";
 import CourseSidePanel from "../components/CourseSidePanel";
 
 export default function Manage() {
@@ -38,13 +34,17 @@ export default function Manage() {
         </button>
       </div> */}
           <div className="grid grid-cols-3 gap-4">
-            <CourseSidePanel addCourseButton userClicked={(id: string) => console.log(id)} userClickedManageOrAdd={() => null}/>
+            <CourseSidePanel
+              addCourseButton
+              userClicked={(id: string) => console.log(id)}
+              userClickedManageOrAdd={() => null}
+            />
             <CourseInfo />
           </div>
         </div>
       </SignedIn>
       <SignedOut>
-        <Navigate to='../'/>
+        <Navigate to="../" />
       </SignedOut>
     </>
   );

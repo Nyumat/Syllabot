@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.cl-formButtonPrimary {
+    font-size: 14px;
+    text-transform: none;
+    background-color: #DC4405;
+    --accentDark: #f94b00;
+}
+
+.cl-footerActionLink {
+    color: #DC4405;
+}
+
+.cl-footerActionLink:hover {
+    color: #f94b00;
+}
+
+.cl-internal-b3fm6y {
+    background-color: #DC4405;
+}

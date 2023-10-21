@@ -1,7 +1,9 @@
 import NavBar from "../components/NavBar";
-import FileUpload from "../components/FileUpload";
+import { useDropzone } from "react-dropzone";
 
 export default function Home() {
+  const { getRootProps, open, getInputProps } = useDropzone();
+
   return (
     <>
       <NavBar />
@@ -14,13 +16,36 @@ export default function Home() {
         </h3>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-12">
-          <div className="flex justify-center items-center m-8">
-            <FileUpload />
+          <div className="flex justify-center items-center m-8 shadow-2xl rounded-3xl">
+            <div
+              {...getRootProps({
+                className: "dropzone content-center p-10",
+              })}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                <input {...getInputProps()} />
+                <img src="/doc-icon.svg" />
+                <button
+                  className="btn btn-primary bg-primary-orange min-w-min cursor-pointer text-white hover:bg-primary-orange mt-8 rounded-2xl pr-7 pl-7"
+                  type="button"
+                  onClick={open}
+                >
+                  Upload Syllabus
+                </button>
+                <p className="mt-4 text-2xl">or drop a pdf here</p>
+              </div>
+            </div>
           </div>
-          <div className="flex justify-center items-center m-8">
+          <div className="flex justify-center items-center m-8 shadow-2xl rounded-3xl p-5">
             <textarea
-              className="textarea w-96 h-96 bg-white rounded-2xl shadow m-2 border-none focus:outline-none"
-              placeholder="Copy and Paste your syllabus text"
+              className="textarea w-full h-96 bg-white border-0 text-lg"
+              placeholder="Copy and Paste Your Syllabus Text"
             ></textarea>
           </div>
         </div>

@@ -20,7 +20,7 @@ export default function SignIn() {
 
   return (
     <>
-        <button className="btn btn-primary bg-primary-orange min-w-min cursor-pointer text-white" onClick={(e) => handleClicked(e)}>
+        <button className="btn btn-primary bg-primary-orange min-w-min cursor-pointer text-white hover:bg-primary-orange" onClick={(e) => handleClicked(e)}>
           Sign in
         </button>
     </>

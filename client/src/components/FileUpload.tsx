@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FileUploader } from "react-drag-drop-files";
 
-const fileTypes: string[] = ["JPG", "PNG", "GIF"];
+const fileTypes: string[] = ["PDF"];
 
 function DragDrop() {
   const [file, setFile] = useState<File | null>(null); // Specify the type of 'file'
@@ -10,7 +10,14 @@ function DragDrop() {
     setFile(file);
   };
 
-  return <FileUploader handleChange={handleChange} name="file" types={fileTypes} />;
+  return <FileUploader 
+          className="min-h-full w-full bg-slate-600 rounded-xl p-5"
+          handleChange={handleChange} 
+          name="file" 
+          types={fileTypes} 
+          multiple={false}
+          label="Upload Syllabus or Drop a PDF here"
+          />;
 }
 
 export default DragDrop;

@@ -23,7 +23,7 @@ export default function ImageUploader() {
         >
           Upload Syllabus
         </button>
-        <p className="mt-4 text-2xl">or drop a pdf here</p>
+        <p className="mt-4 text-xl">or drop a .pdf here</p>
       </div>
     </div>
   );

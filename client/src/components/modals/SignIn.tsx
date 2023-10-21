@@ -23,7 +23,7 @@ export function SignIn() {
   return (
     <>
       <button
-        className="min-w-min cursor-pointer border-none m-2 mr-8 hover:text-primary-orange text-lg font-bold"
+        className="min-w-min cursor-pointer border-none m-2 mr-8 hover:text-primary-orange text-lg font-bold transition ease-linear"
         onClick={(e) => handleClicked(e)}
       >
         Log In
@@ -51,8 +51,10 @@ export function InTextSignIn() {
   };
 
   return (
-    <a href="#" onClick={handleClicked}><u>sign in</u></a>
-  )
+    <a href="#" onClick={handleClicked}>
+      <u>sign in</u>
+    </a>
+  );
 }
 
 export function SignUp() {

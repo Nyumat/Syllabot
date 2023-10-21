@@ -1,5 +1,5 @@
 import React from "react";
-import SignIn from "../components/modals/SignIn";
+import { SignIn, SignUp } from "../components/modals/SignIn";
 
 const NavBar: React.FC = () => {
   return (
@@ -18,6 +18,7 @@ const NavBar: React.FC = () => {
         </li>
         <li>
           <SignIn />
+          <SignUp />
         </li>
       </ul>
     </nav>

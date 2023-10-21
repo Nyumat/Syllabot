@@ -1,18 +1,9 @@
 import NavBar from "../components/NavBar";
 import FileManageBtn from "../components/buttons/FileManageBtn";
 import ImageUploader from "../components/ImageUploader";
-<<<<<<< HEAD
 import { SignedIn, SignedOut } from "@clerk/clerk-react";
 import { Navigate } from "react-router-dom";
-=======
-
-import {
-  SignedIn,
-  SignedOut,
-} from "@clerk/clerk-react";
-import {Navigate} from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
->>>>>>> 8b0d428b32287d865a0f5411f9f9e1562096f8b5
 import CourseSidePanel from "../components/CourseSidePanel";
 
 export default function Manage() {

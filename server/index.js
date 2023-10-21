@@ -25,16 +25,24 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(tracker)
 
-mongoose.connect(DB_URL, {
+mongoose
+.connect(DB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-}).then((status) => {
+})
+.then((status) => {
   app.listen(PORT, () => {
     console.log(`[Backend ⚡️]: Server is running on port ${PORT}`);
   });
-}
-).catch((error) => {
+})
+.catch((error) => {
   console.log("[Backend ⚡️]: Server is not running due to error: ", error);
+})
+.finally(() => {
+  mongoose.connection.useDb("Syllabot");
+  app.listen(PORT, () => {
+    console.log("== Server is running on port ", PORT);
+  });
 });
 
 // Routes
@@ -44,4 +52,11 @@ mongoose.connect(DB_URL, {
 app.get('/', (req, res) => {
   res.send('Hello Syllabot!');
 });
+
+app.use("*", function (req, res, next) {
+  res.status(404).json({
+    error: "Requested resource " + req.originalUrl + " does not exist",
+  });
+});
+
 

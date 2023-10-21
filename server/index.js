@@ -4,6 +4,10 @@ import express from "express";
 import rateLimit from "express-rate-limit";
 import mongoose from "mongoose";
 
+// Routes
+import indexDocs from "./routes/indexDocs.js";
+import queryDocs from "./routes/queryDocs.js";
+
 // Middleware
 import tracker from "./middleware/tracker.js";
 
@@ -30,22 +34,22 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then((status) => {
+  .then(() => {
+    console.log(
+      "[MongoDB ⚡️]: Database connection established successfully"
+    );
     app.listen(PORT, () => {
       console.log(`[Backend ⚡️]: Server is running on port ${PORT}`);
     });
-  })
-  .catch((error) => {
-    console.log(
-      "[Backend ⚡️]: Server is not running due to error: ",
-      error
-    );
   });
 
 // Routes
 // app.use('/api', limiter);
-
-// Default Route
-app.get("/", (req, res) => {
-  res.send("Hello Syllabot!");
-});
+app.use("/api/index", indexDocs);
+app.use("/api/query", queryDocs);
+-(
+  // Default Route
+  app.get("/", (req, res) => {
+    res.send("Hello Syllabot!");
+  })
+);

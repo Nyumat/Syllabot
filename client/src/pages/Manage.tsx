@@ -1,11 +1,23 @@
 import NavBar from "../components/NavBar";
 import FileManageBtn from "../components/buttons/FileManageBtn";
 import ImageUploader from "../components/ImageUploader";
+<<<<<<< HEAD
 import { SignedIn, SignedOut } from "@clerk/clerk-react";
 import { Navigate } from "react-router-dom";
+=======
+
+import {
+  SignedIn,
+  SignedOut,
+} from "@clerk/clerk-react";
+import {Navigate} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+>>>>>>> 8b0d428b32287d865a0f5411f9f9e1562096f8b5
 import CourseSidePanel from "../components/CourseSidePanel";
 
 export default function Manage() {
+  const navigate = useNavigate();
+
   return (
     <>
       <SignedIn>
@@ -21,6 +33,7 @@ export default function Manage() {
             <button
               className="normal-case text-lg pl-8 pr-8 w-10pc btn btn-primary mt-5 mx-8 bg-primary-orange min-w-min cursor-pointer border-none shadow text-white hover:bg-white hover:text-primary-orange col-span-2"
               style={{ justifySelf: "right" }}
+              onClick={() => navigate("/chat")}
             >
               Done!
             </button>

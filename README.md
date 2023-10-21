@@ -49,7 +49,7 @@ Especially as the world constantly evolves, embracing digital learning and foste
       <td align="center">
         <a href="https://github.com/ipoogleduck">
           <img src="https://avatars.githubusercontent.com/u/28883682?v=4" width="80"><br>
-          Oliver Elliot
+          Oliver Elliott
         <a/>
       </td>
       <td align="center">

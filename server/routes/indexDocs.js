@@ -1,14 +1,12 @@
-import { Pinecone } from "@pinecone-database/pinecone";
 import { Router } from 'express';
 import { Document } from 'langchain/document';
 import { OpenAIEmbeddings } from "langchain/embeddings/openai";
 import { PineconeStore } from "langchain/vectorstores/pinecone";
+import { pinecone } from "../lib/pinecone.js";
 
 const router = Router();
 
 router.get('/', async (req, res) => {
-
-      const pinecone = new Pinecone();
 
       const pineconeIndex = pinecone.Index(process.env.PINECONE_INDEX);
 

@@ -38,7 +38,7 @@ export default function Manage() {
         </button>
       </div> */}
           <div className="grid grid-cols-3 gap-4">
-            <CourseSidePanel />
+            <CourseSidePanel addCourseButton userClicked={(id: string) => console.log(id)} userClickedManageOrAdd={() => null}/>
             <CourseInfo />
           </div>
         </div>

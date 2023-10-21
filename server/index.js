@@ -27,6 +27,7 @@ app.disable("x-powered-by");
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+<<<<<<< HEAD
 app.use(tracker);
 
 mongoose
@@ -53,3 +54,46 @@ app.use("/api/query", queryDocs);
     res.send("Hello Syllabot!");
   })
 );
+=======
+app.use(tracker)
+
+mongoose
+.connect(DB_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then((status) => {
+  app.listen(PORT, () => {
+    console.log(`[Backend ⚡️]: Server is running on port ${PORT}`);
+  });
+})
+.catch((error) => {
+  console.log("[Backend ⚡️]: Server is not running due to error: ", error);
+})
+.finally(() => {
+  mongoose.connection.useDb("Syllabot");
+  app.listen(PORT, () => {
+    console.log("== Server is running on port ", PORT);
+  });
+});
+
+// Routes
+// app.use('/api', limiter);
+app.use('/api/index', indexDocs);
+app.use('/api/query', queryDocs);-
+
+
+
+// Default Route
+app.get('/', (req, res) => {
+  res.send('Hello Syllabot!');
+});
+
+app.use("*", function (req, res, next) {
+  res.status(404).json({
+    error: "Requested resource " + req.originalUrl + " does not exist",
+  });
+});
+
+
+>>>>>>> ffc0c294b45d3bdae4b7b932f51485ddc257ac54

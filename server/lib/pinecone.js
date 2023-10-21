@@ -11,10 +11,8 @@ const pinecone = new Pinecone({
 
 const index = pinecone.Index(process.env.PINECONE_INDEX);
 
-
 const embeddings = new OpenAIEmbeddings({
       openAIApiKey: process.env.OPENAI_API_KEY,
 })
 
 export { index, pinecone, embeddings };
-

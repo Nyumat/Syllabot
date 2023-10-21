@@ -1,10 +1,16 @@
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Manage from "./pages/Manage";
+import Processing from "./pages/Processing";
+
 function App() {
   return (
     <>
-      <h1 className="text-2xl font-bold text-center text-blue-500">
-        Hello Vite + React!
-      </h1>
-      <button className="btn btn-primary">Button</button>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/processing" element={<Processing />} />
+        <Route path="/manage" element={<Manage />} />
+      </Routes>
     </>
   );
 }

@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       <NavBar />
-      <div className="container mx-auto">
+      <div className="container mx-auto pb-9">
         <h1 className="text-6xl font-bold text-center mt-10">
           Your Syllabus, Simplified
         </h1>
@@ -14,12 +14,12 @@ export default function Home() {
         </h3>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-12">
-          <div className="flex justify-center items-center m-8 shadow-2xl rounded-3xl">
+          <div className="flex justify-center items-center m-8 shadow-xl rounded-3xl">
             <ImageUploader />
           </div>
-          <div className="flex justify-center items-center m-8 shadow-2xl rounded-3xl p-5">
+          <div className="flex justify-center items-center m-8 shadow-xl rounded-3xl p-5">
             <textarea
-              className="textarea w-full h-96 bg-white border-0 text-lg"
+              className="textarea w-full h-96 bg-white border-0 text-lg focus:outline-none"
               placeholder="Copy and Paste Your Syllabus Text"
             ></textarea>
           </div>

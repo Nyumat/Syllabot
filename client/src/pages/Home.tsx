@@ -29,6 +29,7 @@ export default function Home() {
         </div>
 
         <div className="flex justify-center items-center ">
+
           <button className="btn btn-primary bg-primary-orange min-w-min cursor-pointer text-white hover:text-primary-orange border-none shadow m-10">
             Analyze my Syllabus
           </button>

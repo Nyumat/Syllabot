@@ -21,7 +21,7 @@ export default function Home() {
           <div className="flex justify-center items-center m-4 p-8 md:w-96 md:h-96 shadow-xl rounded-3xl">
             <textarea
               className="textarea w-full h-full border-0 text-lg focus:outline-none"
-              style={{resize: 'none'}}
+              style={{ resize: "none" }}
               placeholder="Copy and Paste Your Syllabus Text"
             ></textarea>
           </div>

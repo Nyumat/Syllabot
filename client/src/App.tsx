@@ -4,6 +4,7 @@ function App() {
       <h1 className="text-2xl font-bold text-center text-blue-500">
         Hello Vite + React!
       </h1>
+      <button className="btn btn-primary">Button</button>
     </>
   );
 }

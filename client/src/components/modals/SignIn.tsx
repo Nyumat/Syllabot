@@ -43,16 +43,21 @@ export function SignUp() {
     }
   }, [isLoaded, isSignedIn, navigate]);
 
-  const handleClicked = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClicked = async (
+    e: React.MouseEvent<HTMLButtonElement>
+  ) => {
     e.preventDefault();
     clerk.openSignUp();
   };
 
   return (
     <>
-        <button className="btn btn-primary bg-primary-orange min-w-min cursor-pointer text-white hover:bg-primary-orange" onClick={(e) => handleClicked(e)}>
-          Sign up
-        </button>
+      <button
+        className="btn btn-primary bg-primary-orange min-w-min cursor-pointer text-white border-none hover:bg-white hover:text-primary-orange"
+        onClick={(e) => handleClicked(e)}
+      >
+        Sign up
+      </button>
     </>
   );
 }

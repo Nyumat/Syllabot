@@ -1,5 +1,6 @@
 import ImageUploader from "../components/ImageUploader";
 import NavBar from "../components/NavBar";
+import { InTextSignIn } from "../components/modals/SignIn";
 
 export default function Home() {
   return (
@@ -10,7 +11,7 @@ export default function Home() {
           Your Syllabus, Simplified
         </h1>
         <h3 className="text-2xl text-center font-light mt-2">
-          Upload your first syllabus or <a href="#">sign in</a>
+          Upload your first syllabus or <InTextSignIn/>
         </h3>
 
         <div className="flex flex-col md:flex-row items-center justify-center mt-0">

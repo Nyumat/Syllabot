@@ -32,6 +32,29 @@ export function SignIn() {
   );
 }
 
+export function InTextSignIn() {
+  const clerk = useClerk();
+  const navigate = useNavigate();
+  const { isLoaded, isSignedIn } = useAuth();
+
+  useEffect(() => {
+    if (isLoaded && isSignedIn) {
+      navigate("/manage");
+    }
+  }, [isLoaded, isSignedIn, navigate]);
+
+  const handleClicked = async (
+    event: React.MouseEvent<HTMLAnchorElement>
+  ) => {
+    event.preventDefault();
+    clerk.openSignIn();
+  };
+
+  return (
+    <a href="#" onClick={handleClicked}><u>sign in</u></a>
+  )
+}
+
 export function SignUp() {
   const clerk = useClerk();
   const navigate = useNavigate();

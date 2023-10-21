@@ -14,7 +14,8 @@ export default function Manage() {
         </div>
       </div>
       <div className="text-center font-bold font-body text-3xl flex">
-        Presets
+        <PresetBtn preset={"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"} />
+        <PresetBtn preset={"d"} />
       </div>
     </div>
   );

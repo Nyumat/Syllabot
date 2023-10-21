@@ -29,15 +29,8 @@ export default function Home() {
         </div>
 
         <div className="flex justify-center items-center ">
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-          <button className="btn btn-primary bg-primary-orange min-w-min cursor-pointer mt-8 text-white hover:text-primary-orange border-none shadow m-2">
-=======
+
           <button className="btn btn-primary bg-primary-orange min-w-min cursor-pointer text-white hover:text-primary-orange border-none shadow m-10">
->>>>>>> Stashed changes
-=======
-          <button className="btn btn-primary bg-primary-orange min-w-min cursor-pointer text-white hover:text-primary-orange border-none shadow m-10">
->>>>>>> Stashed changes
             Analyze my Syllabus
           </button>
         </div>
@@ -57,4 +50,5 @@ export default function Home() {
       </div>
     </>
   );
-}
+  }
+

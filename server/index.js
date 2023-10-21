@@ -34,7 +34,8 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then((status) => {
+  .then(() => {
+    console.log("[Backend ⚡️]: Database connected!");
     app.listen(PORT, () => {
       console.log(`[Backend ⚡️]: Server is running on port ${PORT}`);
     });
@@ -45,23 +46,17 @@ mongoose
       error
     );
   })
-  .finally(() => {
-    mongoose.connection.useDb("Syllabot");
-    app.listen(PORT, () => {
-      console.log("== Server is running on port ", PORT);
-    });
-  });
 
 // Routes
 // app.use('/api', limiter);
 app.use("/api/index", indexDocs);
 app.use("/api/query", queryDocs);
--(
-  // Default Route
-  app.get("/", (req, res) => {
-    res.send("Hello Syllabot!");
-  })
-);
+
+// Default Route
+app.get("/", (req, res) => {
+  res.send("Hello Syllabot!");
+})
+
 
 app.use("*", function (req, res, next) {
   res.status(404).json({

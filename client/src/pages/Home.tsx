@@ -1,9 +1,7 @@
+import ImageUploader from "../components/ImageUploader";
 import NavBar from "../components/NavBar";
-import { useDropzone } from "react-dropzone";
 
 export default function Home() {
-  const { getRootProps, open, getInputProps } = useDropzone();
-
   return (
     <>
       <NavBar />
@@ -17,30 +15,7 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-12">
           <div className="flex justify-center items-center m-8 shadow-2xl rounded-3xl">
-            <div
-              {...getRootProps({
-                className: "dropzone content-center p-10",
-              })}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                }}
-              >
-                <input {...getInputProps()} />
-                <img src="/doc-icon.svg" />
-                <button
-                  className="btn btn-primary bg-primary-orange min-w-min cursor-pointer text-white hover:bg-primary-orange mt-8 rounded-2xl pr-7 pl-7"
-                  type="button"
-                  onClick={open}
-                >
-                  Upload Syllabus
-                </button>
-                <p className="mt-4 text-2xl">or drop a pdf here</p>
-              </div>
-            </div>
+            <ImageUploader />
           </div>
           <div className="flex justify-center items-center m-8 shadow-2xl rounded-3xl p-5">
             <textarea

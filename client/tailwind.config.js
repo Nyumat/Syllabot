@@ -13,7 +13,7 @@ export default {
         black: "#000000",
       },
       fontFamily: {
-        general: ["Roboto"],
+        body: ["Roboto"],
       },
     },
   },

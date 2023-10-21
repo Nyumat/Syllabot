@@ -2,6 +2,7 @@ import NavBar from "../components/NavBar";
 import CourseBtn from "../components/buttons/CourseBtn";
 import FileManageBtn from "../components/buttons/FileManageBtn";
 import ImageUploader from "../components/ImageUploader";
+import { FaPlus } from "react-icons/fa";
 
 export default function Manage() {
   return (
@@ -48,8 +49,11 @@ function CourseSidePanel() {
         <CourseBtn coursename={"Course name 2"} />
         <CourseBtn coursename={"Course name 3"} />
         <CourseBtn coursename={"Course name 4"} />
-        <button className="px-6 pt-3 pb-3 text-start text-xl font-medium bg-transparent border-solid hover:bg-primary-grey transition ease-linear border-b focus:bg-primary-grey focus:text-primary-orange">
-          Add a Course
+        <button
+          className="flex flex-row items-center
+         justify-between px-6 pt-3 pb-3 text-start text-xl font-medium bg-transparent border-solid hover:bg-primary-grey transition ease-linear border-b focus:bg-primary-grey focus:text-primary-orange"
+        >
+          Add a Course <FaPlus />
         </button>
       </div>
     </div>

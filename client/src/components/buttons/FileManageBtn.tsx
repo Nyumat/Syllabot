@@ -1,3 +1,5 @@
+import { FaTrashAlt } from "react-icons/fa";
+
 export default function FileManageBtn({ filename }) {
   return (
     <>
@@ -5,7 +7,7 @@ export default function FileManageBtn({ filename }) {
         {filename}
       </div>
       <button className="pl-5 pr-5 pt-2 pb-2 bg-primary-black shadow-md rounded-xl text-white ml-3 mt-3 hover:bg-primary-grey hover:text-black transition ease-linear active:bg-primary-black active:text-white">
-        X
+        <FaTrashAlt />
       </button>
     </>
   );

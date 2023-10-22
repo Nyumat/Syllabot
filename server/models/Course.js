@@ -2,10 +2,6 @@ import mongoose from "mongoose";
 import File from "./File.js";
 
 const courseSchema = mongoose.Schema({
-      name: {
-            type: String,
-            required: true,
-      },
       files: [
             {
                   type: mongoose.Schema.Types.ObjectId,
@@ -18,6 +14,10 @@ const courseSchema = mongoose.Schema({
                   ref: "Message", 
             }
       ],
+      courseDetails: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "CourseDetails",
+      },
 }, { timestamps: true });
 
 const Course = mongoose.model("Course", courseSchema);

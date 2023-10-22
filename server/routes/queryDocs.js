@@ -23,10 +23,10 @@ router.post('/', async (req, res) => {
       const chain = VectorDBQAChain.fromLLM(model, vectorStore, {
             k: 1,
             returnSourceDocuments: false,
-      });
+      })
 
       try {
-            const response = await chain.call({ query: query });
+            const response = await chain.call({ query: query })
             return res.status(200).json(response);
       } catch (error) {
             console.log(error);

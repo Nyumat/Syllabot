@@ -47,6 +47,7 @@ router.post('/', upload.single('file'), async (req, res) => {
 
       try {
             const courseName = await getCourseName(content);
+            getCourseById(courseId)
       } catch (error) {
             console.log(error);
             client.close();

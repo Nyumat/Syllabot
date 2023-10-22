@@ -6,7 +6,7 @@ const openai = new OpenAI({
       apiKey: process.env.OPENAI_API_KEY,
 });
 
-export async function getCourseName(content) {
+export async function getCourseDetails(content) {
       const response = await openai.chat.completions.create({
             model: "gpt-4",
             messages: [
@@ -27,9 +27,6 @@ export async function getCourseName(content) {
       });
 
       const message = response.choices[0].message.content;
-
-      console.log(message);
-
       return message;
 }
 

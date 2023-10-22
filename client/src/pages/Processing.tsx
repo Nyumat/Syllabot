@@ -1,4 +1,4 @@
-import LoadingSpinner from "../components/spinners/LoadingSpinner";
+import HashLoader from "react-spinners/HashLoader";
 import Header from "../components/Header";
 
 export default function Processing() {
@@ -7,11 +7,17 @@ export default function Processing() {
          <Header />
          <div className="text-center text-5xl font-bold mb-6 mt-10">
             Analyzing your syllabus...
+            <div className="font-light text-2xl mt-5 mb-24">
+               Something something something
+            </div>
          </div>
-         <div className="flex place-content-center font-light text-2xl mb-20">
-            Something something something
+         <div className="flex flex-col place-content-center text-2xl justify-center">
+            <HashLoader
+               color="#DC4405"
+               size={180}
+               cssOverride={{ placeSelf: "center" }}
+            />
          </div>
-         <LoadingSpinner />
       </>
    );
 }

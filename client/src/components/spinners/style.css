@@ -1,8 +1,0 @@
-.spinner {
-  height: 35vh;
-  width: 35vh;
-  border: dotted 5.5vh;
-  border-color: rgba(220, 68, 5, 1);
-  border-radius: 50%;
-  animation: spin 1.5s ease infinite;
-}

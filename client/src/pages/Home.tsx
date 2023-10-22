@@ -6,6 +6,7 @@ import {
 } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
 import CourseSidePanel from "../components/CourseSidePanel";
+import Presets from "../components/lists/Presets";
 import { Course } from "../data/types";
 
 export default function Home() {
@@ -26,6 +27,7 @@ export default function Home() {
             <div className="text-center items-center justify-center content-center h-full font-body">
                 <NavBar />
                 <div className="grid grid-cols-3 gap-4">
+                    <Presets />
                     <CourseSidePanel userClicked={(course: Course) => console.log(course.courseTitle)} userClickedManageOrAdd={userClickedManage}/>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { Document } from 'langchain/document';
 import { OpenAIEmbeddings } from 'langchain/embeddings/openai';
+import { CharacterTextSplitter } from 'langchain/text_splitter';
 import { PineconeStore } from 'langchain/vectorstores/pinecone';
 import mongodb from 'mongodb';
 import multer from 'multer';
@@ -9,7 +10,6 @@ import { getCourseName } from '../lib/getter.js';
 import { processPdf } from '../lib/langchain.js';
 import { pinecone } from '../lib/pinecone.js';
 import File from '../models/File.js';
-import { CharacterTextSplitter } from 'langchain/text_splitter';
 
 
 const router = Router();
@@ -47,6 +47,7 @@ router.post('/', upload.single('file'), async (req, res) => {
 
       try {
             const courseName = await getCourseName(content);
+            console.log(courseName);
       } catch (error) {
             console.log(error);
             client.close();

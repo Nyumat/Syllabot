@@ -12,23 +12,21 @@ dotenv.config();
 
 router.post('/', async (req, res) => {
 
+      const { query } = req.body;
+
       const vectorStore = await PineconeStore.fromExistingIndex(new OpenAIEmbeddings(), { pineconeIndex: index });
 
-      const results = await vectorStore.similaritySearch("pinecone", 1, {
-            foo: "bar",
-      });
-
-      console.log("results:", results);
+      const results = await vectorStore.similaritySearch(`${query}`, 1);
 
       const model = new OpenAI();
 
       const chain = VectorDBQAChain.fromLLM(model, vectorStore, {
             k: 1,
-            returnSourceDocuments: true,
+            returnSourceDocuments: false,
       });
 
       try {
-            const response = await chain.call({ query: "What is a pinecone?" });
+            const response = await chain.call({ query: query });
             return res.status(200).json(response);
       } catch (error) {
             console.log(error);

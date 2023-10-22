@@ -3,7 +3,7 @@ export type Course = {
     courseTitle: string
     documents: Document[]
     instructorName?: string
-    schedule?: string
+    classTimes?: string
     importantNotes?: {
         title: string
         description: string

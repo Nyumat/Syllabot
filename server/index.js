@@ -8,6 +8,7 @@ import mongoose from "mongoose";
 import indexDocs from "./routes/indexDocs.js";
 import queryDocs from "./routes/queryDocs.js";
 import users from "./routes/users.js";
+import uuid from "./routes/private.js";
 
 // Middleware
 import tracker from "./middleware/tracker.js";
@@ -53,6 +54,7 @@ mongoose
 app.use("/api/index", indexDocs);
 app.use("/api/query", queryDocs);
 app.use("/api/users", users);
+app.use("/generateId", uuid);
 
 
 // Default Route

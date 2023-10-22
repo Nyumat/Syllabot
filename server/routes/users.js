@@ -35,7 +35,6 @@ Create a new user entry
 */
 router.post("/", async (req, res, next) => {
     var body = null;
-  
     try {
       const id = await createUser(body);
       res.status(201).send({ _id: id });

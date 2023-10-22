@@ -9,7 +9,13 @@ const courseSchema = mongoose.Schema({
       files: [
             {
                   type: mongoose.Schema.Types.ObjectId,
-                  ref: "File", // Reference to the Course model
+                  ref: "File",
+            }
+      ],
+      chats: [
+            {
+                  type: mongoose.Schema.Types.ObjectId,
+                  ref: "Message", 
             }
       ],
 }, { timestamps: true });
@@ -38,6 +44,7 @@ const getCourseFiles = async (id) => {
             return null;
       }
 };
+
 
 
 export { createCourse, getCourseFiles };

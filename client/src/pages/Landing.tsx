@@ -10,6 +10,30 @@ import {
 import { Navigate } from "react-router-dom";
 
 export default function Landing() {
+
+  const contribs = [
+    {
+      name: "Imgyeong Lee",
+      link: "https://oliverthis.com",
+      pfp: "imgyeong.png",
+    },
+    {
+      name: "Oliver Elliott",
+      link: "https://oliverthis.com",
+      pfp: "oliver.png",
+    },
+    {
+      name: "Tom Nyuma",
+      link: "https://oliverthis.com",
+      pfp: "tom.png",
+    },
+    {
+      name: "Sankalp Patil",
+      link: "https://oliverthis.com",
+      pfp: "sandy.png",
+    },
+  ]
+
   return (
     <>
       <NavBar />
@@ -94,6 +118,20 @@ export default function Landing() {
               <h3 className="text-6xl flex-wrap font-bold mt-2 text-center" style={{ fontSize: '6vw' }}>
                 For Students
               </h3>
+            </div>
+
+            <div className="flex flex-row justify-evenly mx-40 mb-20">
+              {contribs.map(contrib => (
+                <div className="flex flex-col align-middle">
+                  <a href={contrib.link} className="text-center text-2xl">
+                  <img
+                    src={contrib.pfp}
+                  />
+                  
+                    {contrib.name}
+                  </a>
+                </div>
+              ))}
             </div>
           </>
         </SignedOut>

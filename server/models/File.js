@@ -14,10 +14,14 @@ const fileSchema = mongoose.Schema({
             type: String,
             required: true,
       },
-      path: {
+      courseId: {
             type: String,
             required: true,
       },
+      pageContent: {
+            type: String,
+            required: true,
+      }
 }, { timestamps: true });
 
 const File = mongoose.model("File", fileSchema);

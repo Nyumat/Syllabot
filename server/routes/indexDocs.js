@@ -4,9 +4,12 @@ import { OpenAIEmbeddings } from 'langchain/embeddings/openai';
 import { PineconeStore } from 'langchain/vectorstores/pinecone';
 import mongodb from 'mongodb';
 import multer from 'multer';
+import { Readable } from 'stream';
+import { getCourseName } from '../lib/getter.js';
 import { processPdf } from '../lib/langchain.js';
 import { pinecone } from '../lib/pinecone.js';
-import { Readable } from 'stream';
+import File from '../models/File.js';
+
 
 const router = Router();
 
@@ -26,12 +29,42 @@ router.post('/', upload.single('file'), async (req, res) => {
       const bucket = new mongodb.GridFSBucket(db);
 
       const pdfData = req.file.buffer;
-      console.log(pdfData);
       const pageContent = await processPdf(pdfData);
+
+      // non-alpha
+      let content = pageContent.replace(/[^a-zA-Z0-9 ]/g, '');
+      // leading spaces
+      content = content.replace(/^[ ]+/g, '');
+
+      const data = new File({
+            fileName: req.file.originalname,
+            contentType: req.file.mimetype,
+            userId,
+            courseId,
+            pageContent: content,
+      });
+
+      try {
+            const courseName = await getCourseName(content);
+            console.log(courseName);
+      } catch (error) {
+            console.log(error);
+            client.close();
+            return res.status(500).json({ error: error });
+      }
+
+
+      try {
+            await data.save();
+      } catch (error) {
+            console.log(error);
+            client.close();
+            return res.status(500).json({ error: error });
+      }
 
       const docs = [
             new Document({
-                  metadata: { userId, courseId },
+                  metadata: { userId, courseId, fileName: req.file.originalname },
                   pageContent,
             }),
       ];
@@ -41,8 +74,6 @@ router.post('/', upload.single('file'), async (req, res) => {
                   pineconeIndex,
                   maxConcurrency: 5,
             }).then(async (store) => {
-                  console.log(store);
-
                   const uploadStream = bucket.openUploadStream(req.file.originalname);
                   const bufferStream = new Readable();
                   bufferStream.push(req.file.buffer);

@@ -69,7 +69,7 @@ export default function Landing() {
               </div>
             </div>
 
-            <div className="flex flex-1 flex-col text-black w-full mr-20 self-center p-12">
+            {/* <div className="flex flex-1 flex-col text-black w-full mr-20 self-center p-12">
               <h3 className="text-6xl flex-wrap font-bold" style={{ fontSize: '6vw' }}>
                 You Have a Question?
               </h3>
@@ -79,7 +79,12 @@ export default function Landing() {
               <h6 className="text-4xl flex-wrap font-semibold mt-2 text-zinc-600">
                 Ask Syllabot any question about your classes
               </h6>
-            </div>
+            </div> */}
+
+            <img 
+              src="laptops.svg"
+              className="w-full"
+            />
           </>
         </SignedOut>
         <SignedIn>

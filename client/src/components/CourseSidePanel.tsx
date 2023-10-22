@@ -23,7 +23,20 @@ export default function CourseSidePanel({
     {
       id: "1",
       courseTitle: "Course name 1",
-      documents: [],
+      documents: [
+        {
+          id: "4553",
+          name: "mySyllabus1.pdf"
+        },
+        {
+          id: "4ef553",
+          name: "myText1.pdf"
+        },
+        {
+          id: "df4553",
+          name: "Sandy's_Butt.pdf"
+        },
+      ],
     },
     {
       id: "93932",

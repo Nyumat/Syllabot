@@ -16,12 +16,16 @@ const fileSchema = mongoose.Schema({
       },
       courseId: {
             type: String,
-            required: true,
+            required: false,
       },
       pageContent: {
             type: String,
             required: true,
-      }
+      },
+      details: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "CourseDetails",
+      },
 }, { timestamps: true });
 
 const File = mongoose.model("File", fileSchema);

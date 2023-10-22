@@ -18,6 +18,10 @@ const courseSchema = mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "CourseDetails",
       },
+      userId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+      },
 }, { timestamps: true });
 
 const Course = mongoose.model("Course", courseSchema);

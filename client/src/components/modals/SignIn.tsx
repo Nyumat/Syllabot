@@ -7,11 +7,11 @@ export function SignIn() {
   const navigate = useNavigate();
   const { isLoaded, isSignedIn } = useAuth();
 
-  useEffect(() => {
-    if (isLoaded && isSignedIn) {
-      navigate("/chat");
-    }
-  }, [isLoaded, isSignedIn, navigate]);
+  // useEffect(() => {
+  //   if (isLoaded && isSignedIn) {
+  //     navigate("/chat");
+  //   }
+  // }, [isLoaded, isSignedIn, navigate]);
 
   const handleClicked = async (
     e: React.MouseEvent<HTMLButtonElement>
@@ -37,11 +37,11 @@ export function InTextSignIn() {
   const navigate = useNavigate();
   const { isLoaded, isSignedIn } = useAuth();
 
-  useEffect(() => {
-    if (isLoaded && isSignedIn) {
-      navigate("/chat");
-    }
-  }, [isLoaded, isSignedIn, navigate]);
+  // useEffect(() => {
+  //   if (isLoaded && isSignedIn) {
+  //     navigate("/chat");
+  //   }
+  // }, [isLoaded, isSignedIn, navigate]);
 
   const handleClicked = async (
     event: React.MouseEvent<HTMLAnchorElement>
@@ -62,11 +62,11 @@ export function SignUp() {
   const navigate = useNavigate();
   const { isLoaded, isSignedIn } = useAuth();
 
-  useEffect(() => {
-    if (isLoaded && isSignedIn) {
-      navigate("/chat");
-    }
-  }, [isLoaded, isSignedIn, navigate]);
+  // useEffect(() => {
+  //   if (isLoaded && isSignedIn) {
+  //     navigate("/chat");
+  //   }
+  // }, [isLoaded, isSignedIn, navigate]);
 
   const handleClicked = async (
     e: React.MouseEvent<HTMLButtonElement>

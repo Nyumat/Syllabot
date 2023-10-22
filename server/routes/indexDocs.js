@@ -6,10 +6,13 @@ import { PineconeStore } from 'langchain/vectorstores/pinecone';
 import mongodb from 'mongodb';
 import multer from 'multer';
 import { Readable } from 'stream';
-import { getCourseName } from '../lib/getter.js';
+import { getCourseDetails } from '../lib/getter.js';
 import { processPdf } from '../lib/langchain.js';
 import { pinecone } from '../lib/pinecone.js';
+import Course from '../models/Course.js';
+import { createCourseDetails } from '../models/CourseDetails.js';
 import File from '../models/File.js';
+import { addCourse, createUser, readUserById } from '../models/User.js';
 
 
 const router = Router();
@@ -20,7 +23,7 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
 router.post('/', upload.single('file'), async (req, res) => {
-      const { userId, courseId } = req.body;
+      const { userId } = req.body;
       const pineconeIndex = pinecone.Index(process.env.PINECONE_INDEX);
 
       const client = new mongodb.MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -37,17 +40,50 @@ router.post('/', upload.single('file'), async (req, res) => {
       // leading spaces
       content = content.replace(/^[ ]+/g, '');
 
-      const data = new File({
+      let data = new File({
             fileName: req.file.originalname,
             contentType: req.file.mimetype,
             userId,
-            courseId,
             pageContent: content,
       });
 
       try {
-            const courseName = await getCourseName(content);
-            console.log(courseName);
+            const courseDetails = await getCourseDetails(content);
+
+            if (courseDetails) {
+                  const details = JSON.parse(courseDetails);
+
+                  const courseDetailsId = await createCourseDetails(details);
+
+                  data.details = courseDetailsId;
+
+                  console.log(`Course details is successfully saved: ${courseDetailsId}`)
+
+            } else {
+                  console.log(`Course details is not found`);
+            }
+      } catch (error) {
+            console.log(error);
+            client.close();
+            return res.status(500).json({ error: error });
+      }
+
+      try {
+            const user = await readUserById(userId);
+
+            const course = new Course({
+                  files: [new mongodb.ObjectId(data._id)],
+                  chats: [],
+                  courseDetails: data.details,
+                  userId: new mongodb.ObjectId(user._id),
+            });
+
+            await course.save();
+
+            await addCourse(user._id, course._id);
+
+            data.courseId = new mongodb.ObjectId(course._id);
+
       } catch (error) {
             console.log(error);
             client.close();
@@ -70,7 +106,7 @@ router.post('/', upload.single('file'), async (req, res) => {
 
       const docs = await splitter.splitDocuments([
             new Document({
-                  metadata: { userId, courseId, fileName: req.file.originalname },
+                  metadata: { userId, courseId: data.courseId, fileName: req.file.originalname },
                   pageContent,
             })
       ])
@@ -102,6 +138,16 @@ router.post('/', upload.single('file'), async (req, res) => {
             console.log(error);
             client.close();
             return res.status(500).json({ error: error });
+      }
+});
+
+router.patch('/', async (req, res) => {
+      const { name } = req.body;
+      try {
+            const user = createUser({ name });
+            res.status(201).send({ _id: user._id });
+      } catch (err) {
+            res.status(404).send({ ERROR: "error creating new user" });
       }
 });
 

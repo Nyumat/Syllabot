@@ -1,7 +1,29 @@
 import { useDropzone } from "react-dropzone";
+import axios from 'axios';
 
 export default function ImageUploader({ mini = false }) {
-  const { getRootProps, open, getInputProps } = useDropzone();
+  
+  const onDrop = (acceptedFiles: File[]) => {
+    const data = new FormData();
+    data.append('file', acceptedFiles[0]);
+  
+    const port = 8080; // Replace with your server's port
+    axios.post(`http://localhost:${port}/api/users/newFile`, data)
+      .then((res) => {
+        console.log(res.data); // Use res.data to access the server response
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  
+
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop,
+    accept: {
+      'application/pdf': ['.pdf'], // Specify the accepted file type(s)
+    }
+  });
 
   return (
     <div
@@ -13,7 +35,6 @@ export default function ImageUploader({ mini = false }) {
         <button
           className="btn btn-primary normal-case bg-primary-orange cursor-pointer text-white hover:bg-white hover:text-primary-orange shadow border-none mt-8 rounded-2xl pr-7 pl-7 text-la"
           type="button"
-          onClick={open}
         >
           Upload Syllabus
         </button>

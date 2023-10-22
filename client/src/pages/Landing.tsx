@@ -52,10 +52,10 @@ export default function Landing() {
                 <h3 className="text-6xl flex-wrap font-bold" style={{ fontSize: '6vw' }}>
                   Classes are Overwhelming
                 </h3>
-                <h6 className="text-4xl flex-wrap font-semibold mt-1">
+                <h6 className="text-4xl flex-wrap font-semibold mt-1" style={{ fontSize: '2.5vw' }}>
                   Let us do the work
                 </h6>
-                <p className="text-2xl flex-wrap font-normal mt-12">
+                <p className="text-2xl flex-wrap font-normal mt-12" style={{ fontSize: '2vw', lineHeight: '2.5vw' }}>
                   Syllabot imports syllabi from all your
                   classes and puts the important information
                   up front
@@ -69,22 +69,32 @@ export default function Landing() {
               </div>
             </div>
 
-            {/* <div className="flex flex-1 flex-col text-black w-full mr-20 self-center p-12">
+            <div className="flex flex-1 flex-col text-black w-full mr-20 self-center p-12">
               <h3 className="text-6xl flex-wrap font-bold" style={{ fontSize: '6vw' }}>
                 You Have a Question?
               </h3>
               <h3 className="text-6xl flex-wrap font-bold mt-2" style={{ fontSize: '6vw' }}>
                 We Have the Answer
               </h3>
-              <h6 className="text-4xl flex-wrap font-semibold mt-2 text-zinc-600">
+              <h6 className="text-4xl flex-wrap font-semibold mt-2 text-zinc-600" style={{ fontSize: '2.5vw' }}>
                 Ask Syllabot any question about your classes
               </h6>
-            </div> */}
+            </div>
 
-            <img 
-              src="laptops.svg"
+            <img
+              src="computers-no-text.svg"
               className="w-full"
+              style={{ marginTop: -200 }}
             />
+
+            <div className="flex flex-1 flex-col text-black w-full mr-20 self-center p-12">
+              <h3 className="text-6xl flex-wrap font-bold text-center" style={{ fontSize: '6vw' }}>
+                Designed by Students
+              </h3>
+              <h3 className="text-6xl flex-wrap font-bold mt-2 text-center" style={{ fontSize: '6vw' }}>
+                For Students
+              </h3>
+            </div>
           </>
         </SignedOut>
         <SignedIn>

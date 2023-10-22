@@ -6,9 +6,11 @@ import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import CourseSidePanel from "../components/CourseSidePanel";
 import { Course } from "../data/types";
+import { useState } from "react";
 
 export default function Manage() {
   const navigate = useNavigate();
+  const [selectedCourse, setSelectedCourse] = useState<Course>()
 
   return (
     <>
@@ -41,10 +43,10 @@ export default function Manage() {
           <div className="grid grid-cols-3 gap-4">
             <CourseSidePanel
               addCourseButton
-              userClicked={(course: Course) => console.log(course.id)}
+              userClicked={setSelectedCourse}
               userClickedManageOrAdd={() => null}
             />
-            <CourseInfo />
+            {selectedCourse ? <CourseInfo course={selectedCourse}/> : null }
           </div>
         </div>
       </SignedIn>
@@ -55,20 +57,17 @@ export default function Manage() {
   );
 }
 
-function CourseInfo() {
+function CourseInfo({course}: {course: Course}) {
   return (
     <div className="col-span-2">
-      <div className="text-3xl font-semibold text-start pl-8 mt-3 select-none">
-        Course Name
+      <div className="text-4xl font-semibold text-start pl-8 mt-3 select-none">
+        {course.courseTitle}
       </div>
-      <div className="flex flex-row flex-wrap mt-6 justify-center self-center">
-        <FileManageBtn filename={"File.pdf1"} />
-        <FileManageBtn filename={"File.pdf2"} />
-        <FileManageBtn filename={"File.pdf3"} />
-        <FileManageBtn filename={"File.pdf4"} />
-      </div>
+      { course.documents.length ? <div className="flex flex-row flex-wrap mt-6 justify-center self-center">
+        {course.documents.map(doc => <FileManageBtn filename={doc.name} />)}
+      </div> : null}
       <div className="text-3xl font-semibold text-start pl-8 mt-8 select-none">
-        Add New
+        Add New File
       </div>
       <div className="flex flex-row flex-wrap mt-3 justify-center">
         <div className="flex justify-center items-center  md:w-1/3 md:h-60 shadow-xl rounded-2xl">

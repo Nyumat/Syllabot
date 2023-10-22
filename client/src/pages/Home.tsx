@@ -25,10 +25,12 @@ export default function Home() {
       const requestData = async () =>{
          try{
             const token = await getToken();
+            const uid = await user?.id
             const response = await fetch(
                `api/users/getCourses`,
                {
-                  method: "GET",
+                  method: "POST",
+                  body: JSON.stringify({userId: uid}),
                   headers: {
                      "Content-Type": "application/json",
                      Authorization: `Bearer ${token}`,
@@ -44,6 +46,7 @@ export default function Home() {
             console.error("Error fetching course data:", error); 
          }
       }
+      requestData()
    }, []);
 
 

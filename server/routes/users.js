@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import mongoose from 'mongoose';
 const { ObjectId } = mongoose.Types;
-import { ClerkExpressWithAuth } from "@clerk/clerk-sdk-node"
+// import { ClerkExpressWithAuth } from "@clerk/clerk-sdk-node"
 
 import multer from 'multer';
 const upload = multer({ dest: "uploads/" });
@@ -10,7 +10,6 @@ import { createUser, readUserById } from "../models/User.js";
 import { createCourse, getCourseFiles } from "../models/Course.js";
 import { createFile } from "../models/File.js";
 const router = Router();
-
 
 /*
 Create a new file entry 
@@ -50,8 +49,8 @@ router.post("/", async (req, res, next) => {
 /*
 Fetch user data by user id gotten from clerk
 */
-router.get("/getCourses", ClerkExpressWithAuth(), async (req, res, next) => {
-    const userId = req.auth.userId;
+router.get("/getCourses", async (req, res, next) => { // ClerkExpressWithAuth(),
+    const userId = req.body.userId; //req.auth.userId;
     var user = null;
     try {
       user = await readUserByClerkId(userId);

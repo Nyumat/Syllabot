@@ -11,7 +11,7 @@ const userSchema = mongoose.Schema({
   courses: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Course", // Reference to the Course model
+      ref: "Course", 
     },
   ],
 }, { timestamps: true });
@@ -55,6 +55,21 @@ const readUserById = async (id) => {
   try {
     const user = await User.findById(id);
     return user;
+  } catch (err) {
+    return null;
+  }
+};
+
+const addCourse = async (id, body) => {
+  try {
+    const user = await User.findById(id);
+    const newCourse = new Course({
+      files: [],
+    });
+    await newCourse.save();
+    user.courses.push(newCourse._id);
+    await user.save();
+    return newCourse._id;
   } catch (err) {
     return null;
   }

@@ -5,11 +5,8 @@ import Manage from "./pages/Manage";
 import Processing from "./pages/Processing";
 import Home from "./pages/Home";
 
-if (!import.meta.env.VITE_CLERK_PUBLISHABLE_KEY) {
-   throw new Error("Missing Publishable Key");
-}
-
-const clerkPubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+const clerkPubKey =
+   "pk_test_YWNjdXJhdGUtY295b3RlLTkyLmNsZXJrLmFjY291bnRzLmRldiQ";
 
 function App() {
    return (

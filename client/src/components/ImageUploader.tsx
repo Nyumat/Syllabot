@@ -16,7 +16,6 @@ export default function ImageUploader({ mini = false }) {
         console.error(error);
       });
   };
-  
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,

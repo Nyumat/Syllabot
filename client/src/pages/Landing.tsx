@@ -49,10 +49,10 @@ export default function Landing() {
 
                   <div className="bg-primary-orange mt-20 select-none p-12 flex-row flex flex-wrap justify-center">
                      <div className="flex flex-1 flex-col text-white w-full sm:w-2/3 lg:w-3/5 xl:w-1/2 mr-20 self-center">
-                        <h3 className="text-6xl flex-wrap font-bold">
+                        <h3 className="text-6xl flex-wrap font-bold" style={{fontSize: '6vw'}}>
                            Classes are Overwhelming
                         </h3>
-                        <h6 className="text-4xl flex-wrap font-semibold mt-8">
+                        <h6 className="text-4xl flex-wrap font-semibold mt-1">
                            Let us do the work
                         </h6>
                         <p className="text-2xl flex-wrap font-normal mt-12">

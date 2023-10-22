@@ -1,6 +1,7 @@
 export type Course = {
     id: string
     courseTitle: string
+    documents: Document[]
     instructorName?: string
     schedule?: string
     importantNotes?: {

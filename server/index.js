@@ -7,6 +7,7 @@ import mongoose from "mongoose";
 // Routes
 import indexDocs from "./routes/indexDocs.js";
 import queryDocs from "./routes/queryDocs.js";
+import users from "./routes/users.js";
 
 // Middleware
 import tracker from "./middleware/tracker.js";
@@ -51,6 +52,8 @@ mongoose
 // app.use('/api', limiter);
 app.use("/api/index", indexDocs);
 app.use("/api/query", queryDocs);
+app.use("/api/users", users);
+
 
 // Default Route
 app.get("/", (req, res) => {

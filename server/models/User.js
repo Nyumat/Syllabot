@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import Course from "./Course";
-import File from "./File";
+import Course from "./Course.js";
+import File from "./File.js";
 const db = mongoose.connection.useDb("Syllabot");
 
 const userSchema = mongoose.Schema({
@@ -60,7 +60,4 @@ const readUserById = async (id) => {
   }
 };
 
-module.exports = {
-  createUser,
-  readUserById,
-};
+export { createUser, readUserById };

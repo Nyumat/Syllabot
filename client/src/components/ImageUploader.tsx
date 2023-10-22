@@ -11,9 +11,8 @@ export default function ImageUploader({ mini = false }) {
         <input {...getInputProps()} />
         {mini && <img src="/doc-icon.svg" />}
         <button
-          className="btn btn-primary normal-case bg-primary-orange min-w-min cursor-pointer text-white hover:bg-white hover:text-primary-orange shadow border-none mt-8 rounded-2xl pr-7 pl-7 text-xl"
+          className="btn btn-primary normal-case bg-primary-orange cursor-pointer text-white hover:bg-white hover:text-primary-orange shadow border-none mt-8 rounded-2xl pr-7 pl-7 text-la"
           type="button"
-          style={{fontSize: '1.5vw'}}
           onClick={open}
         >
           Upload Syllabus

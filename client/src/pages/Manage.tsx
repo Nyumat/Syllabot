@@ -57,26 +57,40 @@ export default function Manage() {
   );
 }
 
-function CourseInfo({course}: {course: Course}) {
+function CourseInfo({ course }: { course: Course }) {
+  const sections = [];
+  for (let i = 0; i < course.documents.length; i += 2) {
+    const section = course.documents.slice(i, i + 2);
+    sections.push(section);
+  }
+
   return (
     <div className="col-span-2">
       <div className="text-4xl font-semibold text-start pl-8 mt-3 select-none">
         {course.courseTitle}
       </div>
-      { course.documents.length ? <div className="flex flex-row flex-wrap mt-6 justify-center self-center">
-        {course.documents.map(doc => <FileManageBtn filename={doc.name} />)}
-      </div> : null}
+      {sections.length > 0 && (
+        <div className="mt-6 justify-center self-center">
+          {sections.map((section, sectionIndex) => (
+            <div key={sectionIndex} className="flex flex-row flex-wrap">
+              {section.map((doc, docIndex) => (
+                <FileManageBtn filename={doc.name} key={docIndex} />
+              ))}
+            </div>
+          ))}
+        </div>
+      )}
       <div className="text-3xl font-semibold text-start pl-8 mt-8 select-none">
         Add New File
       </div>
       <div className="flex flex-row flex-wrap mt-3 justify-center">
-        <div className="flex justify-center items-center  md:w-1/3 md:h-60 shadow-xl rounded-2xl">
+        <div className="flex justify-center items-center md:w-1/3 md:h-60 shadow-xl rounded-2xl">
           <ImageUploader />
         </div>
         <div className="mx-4 text-xl font-normal select-none self-center">
           or
         </div>
-        <div className="flex justify-center items-center md:w-1/2  p-7 md:h-60 shadow-xl rounded-2xl">
+        <div className="flex justify-center items-center md:w-1/2 p-7 md:h-60 shadow-xl rounded-2xl">
           <textarea
             className="textarea w-full h-full border-0 text-lg focus:outline-none resize-none"
             placeholder="Copy and Paste Your Syllabus Text"
@@ -86,3 +100,5 @@ function CourseInfo({course}: {course: Course}) {
     </div>
   );
 }
+
+

@@ -14,12 +14,33 @@ const fileSchema = mongoose.Schema({
             type: String,
             required: true,
       },
-      path: {
+      courseId: {
             type: String,
             required: true,
       },
+      pageContent: {
+            type: String,
+            required: true,
+      }
 }, { timestamps: true });
 
 const File = mongoose.model("File", fileSchema);
 
+const createFile = async (body) => {
+      try {
+            const newFile = new File({
+                  fileName: body.fileName,
+                  contentType: body.contentType,
+                  userId: body.userId,
+                  path: body.path,
+            });
+            await newFile.save();
+            console.log(`New file is successfully saved: ${newFile._id}`);
+            return newFile._id;
+      } catch (err) {
+            return null;
+      }
+};
+
+export { createFile };
 export default File;

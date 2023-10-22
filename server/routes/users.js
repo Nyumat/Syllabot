@@ -1,10 +1,10 @@
-const { Router } = require("express");
-const mongoose = require("mongoose");
+import { Router } from 'express';
+import mongoose from 'mongoose';
 const { ObjectId } = mongoose.Types;
 
-const { createUser, readUserById, userValidSchema} = require("../models/User");
-const { createCourse, getCourseFiles, courseValidSchema} = require("../models/Course");
-const { createFile, getCourseFiles} = require("../models/File");
+import { createUser, readUserById } from "../models/User.js";
+import { createCourse, getCourseFiles } from "../models/Course.js";
+import { createFile } from "../models/File.js";
 const router = Router();
 
 /*
@@ -22,6 +22,10 @@ router.post("/", async (req, res, next) => {
       res.status(404).send({ ERROR: "error creating new user" });
       next();
     }
+});
+
+router.get("/", async (req, res, next) => {
+  res.send("hrthrthgrtg");
 });
 
 /*
@@ -176,4 +180,5 @@ router.delete("/:userId/:courseId/file", async (req, res, next) => {
     }
   });
 
-module.exports = router;
+export default router;
+

@@ -51,6 +51,7 @@ const createUser = async (body) => {
   }
 };
 
+
 const readUserById = async (id) => {
   try {
     const user = await User.findById(id);
@@ -59,6 +60,16 @@ const readUserById = async (id) => {
     return null;
   }
 };
+
+const readUserByClerkId = async (name) => {
+  try {
+    const user = await User.findOne({ name }); 
+    return user;
+  } catch (err) {
+    return null;
+  }
+};
+
 
 const addCourse = async (id, body) => {
   try {

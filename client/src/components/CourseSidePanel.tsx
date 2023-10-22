@@ -10,7 +10,7 @@ import { useState } from "react";
 
 type CourseSidePanelType = {
   addCourseButton?: boolean;
-  userClicked: (id: string) => any;
+  userClicked: (course: Course) => any;
   userClickedManageOrAdd: () => any;
 };
 
@@ -23,18 +23,22 @@ export default function CourseSidePanel({
     {
       id: "1",
       courseTitle: "Course name 1",
+      documents: [],
     },
     {
       id: "93932",
       courseTitle: "Course name 2",
+      documents: [],
     },
     {
       id: "irg8324",
       courseTitle: "Course name 3",
+      documents: [],
     },
     {
       id: "fiefgi",
       courseTitle: "Course name 4",
+      documents: [],
     },
   ];
 
@@ -42,7 +46,7 @@ export default function CourseSidePanel({
 
   const handleSelect = (course: Course) => {
     setIsSelect(course.id);
-    userClickedManageOrAdd();
+    userClicked(course);
   };
 
   return (

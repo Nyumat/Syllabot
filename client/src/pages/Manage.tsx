@@ -5,6 +5,7 @@ import { SignedIn, SignedOut } from "@clerk/clerk-react";
 import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import CourseSidePanel from "../components/CourseSidePanel";
+import { Course } from "../data/types";
 
 export default function Manage() {
   const navigate = useNavigate();
@@ -40,7 +41,7 @@ export default function Manage() {
           <div className="grid grid-cols-3 gap-4">
             <CourseSidePanel
               addCourseButton
-              userClicked={(id: string) => console.log(id)}
+              userClicked={(course: Course) => console.log(course.id)}
               userClickedManageOrAdd={() => null}
             />
             <CourseInfo />

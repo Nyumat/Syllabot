@@ -44,7 +44,7 @@ export default function Landing() {
   return (
     <>
       {hasUploaded ? (
-        <Processing isUploaded={hasUploaded} />
+        <Processing />
       ) : (
         <>
           <NavBar />

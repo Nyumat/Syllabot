@@ -1,18 +1,23 @@
 export type Course = {
-   id: string;
-   courseTitle: string;
-   documents: Document[];
-   instructorName?: string;
-   classTimes?: string;
-   importantNotes?: {
+   id: string
+   chat?: {
+      text: string;
+      bot: boolean;
+      date?: string;
+   }[];
+   files?: {
       title: string;
       description: string;
    }[];
-};
-
-export type Document = {
-   id: string;
-   name: string;
+   courseDetails?: {
+      courseTitle: string;
+      instructorName?: string;
+      classTimes?: string;
+      importantNotes: {
+         title: string;
+         description: string;
+      }[];
+   }
 };
 
 export type PresetType = {

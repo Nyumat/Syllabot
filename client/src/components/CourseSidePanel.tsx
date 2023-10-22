@@ -13,48 +13,51 @@ type CourseSidePanelType = {
   addCourseButton?: boolean;
   userClicked: (course: Course) => any;
   userClickedManageOrAdd: () => any;
+  courses?: Course[];
 };
 
 export default function CourseSidePanel({
   addCourseButton,
   userClicked,
   userClickedManageOrAdd,
+  courses = [],
 }: CourseSidePanelType) {
-  const courses: Course[] = [
-    {
-      id: "1",
-      courseTitle: "Course name 1",
-      documents: [
-        {
-          id: "4553",
-          name: "mySyllabus1.pdf",
-        },
-        {
-          id: "4ef553",
-          name: "myText1.pdf",
-        },
-        {
-          id: "df4553",
-          name: "Sandy's_Butt.pdf",
-        },
-      ],
-    },
-    {
-      id: "93932",
-      courseTitle: "Course name 2",
-      documents: [],
-    },
-    {
-      id: "irg8324",
-      courseTitle: "Course name 3",
-      documents: [],
-    },
-    {
-      id: "fiefgi",
-      courseTitle: "Course name 4",
-      documents: [],
-    },
-  ];
+  
+  // const courses: Course[] = [
+  //   {
+  //     id: "1",
+  //     courseTitle: "Course name 1",
+  //     documents: [
+  //       {
+  //         id: "4553",
+  //         name: "mySyllabus1.pdf",
+  //       },
+  //       {
+  //         id: "4ef553",
+  //         name: "myText1.pdf",
+  //       },
+  //       {
+  //         id: "df4553",
+  //         name: "Sandy's_Butt.pdf",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     id: "93932",
+  //     courseTitle: "Course name 2",
+  //     documents: [],
+  //   },
+  //   {
+  //     id: "irg8324",
+  //     courseTitle: "Course name 3",
+  //     documents: [],
+  //   },
+  //   {
+  //     id: "fiefgi",
+  //     courseTitle: "Course name 4",
+  //     documents: [],
+  //   },
+  // ];
 
   const [isSelect, setIsSelect] = useState("");
 
@@ -86,7 +89,7 @@ export default function CourseSidePanel({
         {courses.map((course) => (
           <CourseBtn
             id={course.id}
-            coursename={course.courseTitle}
+            coursename={course.courseDetails.courseTitle} 
             onClick={() => handleSelect(course)}
             selectedId={isSelect}
           />

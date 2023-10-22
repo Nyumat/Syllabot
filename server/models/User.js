@@ -32,6 +32,7 @@ const createUser = async (body) => {
 }
 
 
+
 const readUserById = async (id) => {
   try {
     const user = await User.findOne({ name: id });
@@ -48,7 +49,18 @@ const readUserById = async (id) => {
   }
 };
 
-const addCourse = async (id, courseId) => {
+
+const readUserByClerkId = async (name) => {
+  try {
+    const user = await User.findOne({ name }); 
+    return user;
+  } catch (err) {
+    return null;
+  }
+};
+
+
+const addCourse = async (id, body) => {
   try {
     const user = await User.findById(id);
     user.courses.push(courseId);

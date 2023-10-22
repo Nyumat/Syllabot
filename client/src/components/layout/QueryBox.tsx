@@ -5,7 +5,7 @@ export default function QueryBox() {
    return (
       <>
          <Presets />
-         <div className="flex flex-row px-6 w-1/2 my-3 z-10 absolute bottom-4">
+         <div className="flex flex-row px-6 w-2/3 my-3 z-10 absolute bottom-4">
             <div className="flex flex-fow justify-center items-center p-2 shadow-xl rounded-2xl w-full bg-white">
                <input
                   type="text"

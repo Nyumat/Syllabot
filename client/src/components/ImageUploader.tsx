@@ -1,3 +1,4 @@
+import { useAuth } from "@clerk/clerk-react";
 import axios from "axios";
 import { useEffect } from "react";
 import { useDropzone } from "react-dropzone";
@@ -20,11 +21,12 @@ interface ImageUploaderProps {
 
 export default function ImageUploader(props: ImageUploaderProps) {
   const navigate = useNavigate();
+  const { userId } = useAuth();
   const onDrop = (acceptedFiles: File[]) => {
     const data = new FormData();
     data.append("file", acceptedFiles[0]);
-    data.append("userId", uuid());
-    data.append("courseId", uuid());
+    data.append("userId", userId as string);
+
     props.setHasUploaded(true);
 
     const port = 8080; // Replace with your server's port

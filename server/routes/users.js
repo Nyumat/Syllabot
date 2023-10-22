@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import mongoose from 'mongoose';
 const { ObjectId } = mongoose.Types;
+// import { ClerkExpressWithAuth } from "@clerk/clerk-sdk-node"
 
 import multer from 'multer';
 const upload = multer({ dest: "uploads/" });
@@ -9,7 +10,6 @@ import { createUser, readUserById } from "../models/User.js";
 import { createCourse, getCourseFiles } from "../models/Course.js";
 import { createFile } from "../models/File.js";
 const router = Router();
-
 
 /*
 Create a new file entry 
@@ -44,14 +44,16 @@ router.post("/", async (req, res, next) => {
     }
 });
 
+
+
 /*
-Fetch a user data by id
+Fetch user data by user id gotten from clerk
 */
-router.get("/:userId", async (req, res, next) => {
-    const userId = req.params.userId;
+router.get("/getCourses", async (req, res, next) => { // ClerkExpressWithAuth(),
+    const userId = req.body.userId; //req.auth.userId;
     var user = null;
     try {
-      user = await readUserById(userId);
+      user = await readUserByClerkId(userId);
     } catch (err) {
       res.status(404).send({ ERROR: "Cannot find user" });
       return;

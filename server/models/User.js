@@ -31,7 +31,6 @@ const createUser = async (body) => {
   }
 }
 
-
 const readUserById = async (id) => {
   try {
     const user = await User.findOne({ name: id });

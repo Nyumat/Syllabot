@@ -14,6 +14,7 @@ import Processing from "./Processing";
 export default function Landing() {
 
   const [hasUploaded, setHasUploaded] = useState(false);
+  const [textInTextArea, setTextInTextArea] = useState("")
 
   const contribs = [
     {
@@ -38,6 +39,13 @@ export default function Landing() {
     },
   ];
 
+  const handleSubmitTextButton = (text: string) => {
+    //SEND TEXT TO BACKEND
+
+    //Show processing screen
+    setHasUploaded(true)
+  }
+
 
   console.log(hasUploaded);
 
@@ -60,30 +68,35 @@ export default function Landing() {
                   </h3>
 
                   <div className="flex flex-col md:flex-row items-center justify-center mt-1">
-                <div className="flex justify-center items-center m-4 p-8 md:w-96 md:h-96 shadow-xl rounded-3xl">
-                  <ImageUploader mini={true}
-                  setHasUploaded={setHasUploaded}
-                  isUploaded={hasUploaded}
-                  />
-                </div>
-                <div className="mx-3 text-2xl font-normal">
-                  or
-                </div>
-                <div className="flex flex-col justify-center items-center">
-                  <div className="flex justify-center items-center m-4 p-8 md:w-96 md:h-80 shadow-xl rounded-3xl">
-                    <textarea
-                      className="textarea w-full h-full border-0 text-lg focus:outline-none"
-                      style={{ resize: "none" }}
-                      placeholder="Copy and Paste Your Syllabus Text"
-                    ></textarea>
+                    <div className="flex justify-center items-center m-4 p-8 md:w-96 md:h-96 shadow-xl rounded-3xl">
+                      <ImageUploader mini={true}
+                        setHasUploaded={setHasUploaded}
+                        isUploaded={hasUploaded}
+                      />
+                    </div>
+                    <div className="mx-3 text-2xl font-normal">
+                      or
+                    </div>
+                    <div className="flex flex-col justify-center items-center">
+                      <div className="flex justify-center items-center m-4 p-8 md:w-96 md:h-80 shadow-xl rounded-3xl">
+                        <textarea
+                          className="textarea w-full h-full border-0 text-lg focus:outline-none"
+                          style={{ resize: "none" }}
+                          placeholder="Copy and Paste Your Syllabus Text"
+                          value={textInTextArea}
+                          onChange={(event) => setTextInTextArea(event.target.value ?? "")}
+                        ></textarea>
+                      </div>
+                      <div className="flex justify-center items-center ">
+                        <button className="btn btn-primary text-base rounded-2xl px-11 normal-case bg-primary-orange min-w-min cursor-pointer text-white hover:text-primary-orange border-none shadow"
+                          onClick={() => handleSubmitTextButton(textInTextArea)}
+                          disabled={!textInTextArea.length}
+                        >
+                          Upload Text
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex justify-center items-center ">
-                    <button className="btn btn-primary text-base rounded-2xl px-11 normal-case bg-primary-orange min-w-min cursor-pointer text-white hover:text-primary-orange border-none shadow">
-                      Upload Text
-                    </button>
-                  </div>
-                </div>
-              </div>
                 </div>
 
                 <div className="bg-primary-orange  select-none p-12 flex-row flex flex-wrap justify-center">
@@ -178,7 +191,7 @@ export default function Landing() {
           <ClerkLoading></ClerkLoading>
         </>
       )
-    }
+      }
     </>
   )
 }

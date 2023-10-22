@@ -3,7 +3,7 @@ import Presets from "./Presets";
 
 export default function QueryBox() {
    return (
-      <>
+      <div className="w-full flex flex-col mt-auto">
          <Presets />
          <div className="flex flex-row px-6 w-2/3 my-3 z-10 absolute bottom-4">
             <div className="flex flex-fow justify-center items-center p-2 shadow-xl rounded-2xl w-full bg-white">
@@ -17,6 +17,6 @@ export default function QueryBox() {
                </button>
             </div>
          </div>
-      </>
+      </div>
    );
 }

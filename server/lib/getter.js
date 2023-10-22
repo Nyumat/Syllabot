@@ -1,7 +1,6 @@
 import dotenv from "dotenv";
-dotenv.config();
-
 import OpenAI from "openai";
+dotenv.config();
 
 const openai = new OpenAI({
       apiKey: process.env.OPENAI_API_KEY,
@@ -27,8 +26,10 @@ export async function getCourseName(content) {
             presence_penalty: 0,
       });
 
-      const message = response.choices[0].message.content; // Access the content of the response
+      const message = response.choices[0].message.content;
+
       console.log(message);
 
+      return message;
 }
 

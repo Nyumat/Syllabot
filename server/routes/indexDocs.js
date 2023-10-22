@@ -9,6 +9,7 @@ import { getCourseName } from '../lib/getter.js';
 import { processPdf } from '../lib/langchain.js';
 import { pinecone } from '../lib/pinecone.js';
 import File from '../models/File.js';
+import { CharacterTextSplitter } from 'langchain/text_splitter';
 
 
 const router = Router();
@@ -46,7 +47,6 @@ router.post('/', upload.single('file'), async (req, res) => {
 
       try {
             const courseName = await getCourseName(content);
-            console.log(courseName);
       } catch (error) {
             console.log(error);
             client.close();
@@ -62,12 +62,17 @@ router.post('/', upload.single('file'), async (req, res) => {
             return res.status(500).json({ error: error });
       }
 
-      const docs = [
+      const splitter = new CharacterTextSplitter({
+            chunkSize: 1536,
+            chunkOverlap: 200,
+      });
+
+      const docs = await splitter.splitDocuments([
             new Document({
                   metadata: { userId, courseId, fileName: req.file.originalname },
                   pageContent,
-            }),
-      ];
+            })
+      ])
 
       try {
             await PineconeStore.fromDocuments(docs, new OpenAIEmbeddings(), {

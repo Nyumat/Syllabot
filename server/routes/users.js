@@ -2,10 +2,31 @@ import { Router } from 'express';
 import mongoose from 'mongoose';
 const { ObjectId } = mongoose.Types;
 
+import multer from 'multer';
+const upload = multer({ dest: "uploads/" });
+
 import { createUser, readUserById } from "../models/User.js";
 import { createCourse, getCourseFiles } from "../models/Course.js";
 import { createFile } from "../models/File.js";
 const router = Router();
+
+
+/*
+Create a new file entry 
+  Name
+  Courses
+*/
+router.post("/newFile", upload.single("file"), async (req, res, next) => {
+  try {
+    const filePath = req.file.path;
+
+    res.status(201).send({ message: "File uploaded successfully" });
+  } catch (err) {
+    res.status(404).send({ ERROR: "Error getting the file" });
+    next();
+  }
+});
+
 
 /*
 Create a new user entry 
@@ -22,10 +43,6 @@ router.post("/", async (req, res, next) => {
       res.status(404).send({ ERROR: "error creating new user" });
       next();
     }
-});
-
-router.get("/", async (req, res, next) => {
-  res.send("hrthrthgrtg");
 });
 
 /*
@@ -52,11 +69,12 @@ router.get("/:userId", async (req, res, next) => {
 
 
 /*
-Create a new course
+Creates a new course (and a new file) under a user
   Name
   Files
 */
-router.post("/:userId/course", async (req, res, next) => {
+
+router.post("/course", async (req, res, next) => {
     var body = null;
     try {
       body = await integrationValidSchema.validateAsync(req.body);

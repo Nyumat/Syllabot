@@ -11,6 +11,9 @@ import { createCourse, getCourseFiles } from "../models/Course.js";
 import { createFile } from "../models/File.js";
 const router = Router();
 
+/*
+TEST API
+*/
 router.get("/test", async (req, res, next) => {
    try {
       res.status(200).send({

@@ -31,6 +31,8 @@ const courseDetailsSchema = mongoose.Schema({
 const CourseDetails = mongoose.model("CourseDetails", courseDetailsSchema);
 
 const createCourseDetails = async (body) => {
+      console.log(body)
+      console.log("cours", body.courseTitle)
       try {
             const newCourseDetails = new CourseDetails({
                   courseTitle: body.courseTitle,
@@ -46,7 +48,7 @@ const createCourseDetails = async (body) => {
       }
 }
 
-const getCourseDetails = async (id) => {
+const getCourseDetailModel = async (id) => {
       try {
             const courseDetails = await CourseDetails.findById(id);
             return courseDetails;

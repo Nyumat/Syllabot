@@ -19,6 +19,7 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/processing" element={<Processing />} />
           <Route path="/manage" element={<Manage />} />
+          <Route path="/chat/:courseId" element={<Home />} />
           <Route path="/chat" element={<Home />} />
         </Routes>
       </ClerkProvider>

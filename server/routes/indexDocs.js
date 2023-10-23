@@ -75,12 +75,13 @@ router.post('/', upload.single('file'), async (req, res) => {
                   files: [new mongodb.ObjectId(data._id)],
                   chats: [],
                   courseDetails: data.details,
-                  userId: new mongodb.ObjectId(user._id),
+                  userId: user._id,
             });
 
             await course.save();
 
-            await addCourse(user._id, course._id);
+      
+            await addCourse(user.name, course._id);
 
             data.courseId = new mongodb.ObjectId(course._id);
 
@@ -107,7 +108,7 @@ router.post('/', upload.single('file'), async (req, res) => {
       const docs = await splitter.splitDocuments([
             new Document({
                   metadata: { userId, courseId: data.courseId, fileName: req.file.originalname },
-                  pageContent,
+                  pageContent: content,
             })
       ])
 

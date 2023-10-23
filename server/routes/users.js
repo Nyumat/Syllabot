@@ -1,7 +1,7 @@
 import { Router } from "express";
 import mongoose from "mongoose";
 import multer from 'multer';
-import Course from "../models/Course.js";
+import Course, { getCourseDetail } from "../models/Course.js";
 import CourseDetails from '../models/CourseDetails.js';
 import User, { createUser, readUserById } from "../models/User.js";
 const { ObjectId } = mongoose.Types;
@@ -211,5 +211,16 @@ router.delete("/:userId/:courseId/file", async (req, res, next) => {
     next();
   }
 });
+
+router.get('/details', async (req, res, next) => {
+  const courseId = req.query.courseId;
+  try {
+    const courseDetails = await getCourseDetail(courseId);
+    return res.status(200).json(courseDetails);
+  } catch (err) {
+    return res.status(500).json({ error: err });
+  }
+}
+);
 
 export default router;

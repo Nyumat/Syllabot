@@ -60,8 +60,6 @@ export default function CourseSidePanel({
 
   const [isSelect, setIsSelect] = useState("");
 
-  console.log(courses);
-
   const handleSelect = (course: Course) => {
     setIsSelect(course._id);
     userClicked(course);
@@ -93,6 +91,7 @@ export default function CourseSidePanel({
           );
           return (
             <CourseBtn
+              key={index}
               id={course._id}
               coursename={detailsForCourseX[0].courseTitle}
               onClick={() => handleSelect(course)}

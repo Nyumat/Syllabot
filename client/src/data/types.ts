@@ -1,5 +1,5 @@
 export type Course = {
-   id: string
+   _id: string
    chat?: {
       text: string;
       bot: boolean;

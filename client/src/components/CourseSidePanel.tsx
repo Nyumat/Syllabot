@@ -60,8 +60,10 @@ export default function CourseSidePanel({
 
   const [isSelect, setIsSelect] = useState("");
 
+  console.log(courses);
+
   const handleSelect = (course: Course) => {
-    setIsSelect(course.id);
+    setIsSelect(course._id);
     userClicked(course);
   };
 
@@ -85,13 +87,13 @@ export default function CourseSidePanel({
         Courses
       </div>
       <div className="flex flex-col shadow-lg rounded-lg ml-8 mt-3">
-        {courses.map((course: any) => {
+        {courses.map((course: any, index: any) => {
           const detailsForCourseX = details.filter(
             (detail: any) => detail._id == course.courseDetails
           );
           return (
             <CourseBtn
-              id={course.id}
+              id={course._id}
               coursename={detailsForCourseX[0].courseTitle}
               onClick={() => handleSelect(course)}
               selectedId={isSelect}

@@ -75,9 +75,7 @@ export default function Home() {
         <NavBar />
         <div className="grid grid-cols-4 gap-4 mt-6">
           <CourseSidePanel
-            userClicked={(course: Course) =>
-              console.log(course.courseDetails?.courseTitle ?? course._id)
-            }
+            userClicked={(course: Course) => navigate(`/chat/${course._id}`)}
             userClickedManageOrAdd={userClickedManage}
             courses={coursesData}
             details={detailsData}

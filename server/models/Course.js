@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import File from "./File.js";
+import CourseDetails from "./CourseDetails.js";
 
 const courseSchema = mongoose.Schema({
       files: [
@@ -49,8 +50,19 @@ const getCourseFiles = async (id) => {
       }
 };
 
+const getCourseDetail = async (id) => {
+      try {
+            const course = await Course.findById(id);
+            const courseDetailsId = course.courseDetails;
+            const details = await CourseDetails.findById(courseDetailsId);
+            return details;
+      } catch (err) {
+            return null;
+      }
+};
 
 
-export { createCourse, getCourseFiles };
+
+export { createCourse, getCourseFiles, getCourseDetail };
 
 export default Course;

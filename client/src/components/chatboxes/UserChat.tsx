@@ -1,5 +1,5 @@
 interface ChatProp {
-   content: String;
+   content: string;
 }
 
 export default function UserChat({ content }: ChatProp) {

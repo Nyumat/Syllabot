@@ -20,12 +20,12 @@ const User = mongoose.model("User", userSchema);
 const createUser = async (body) => {
   try {
     const newUser = new User({
-      name: body.id,
+      name: body,
       courses: [],
     });
     await newUser.save();
-    console.log(`New user is successfully saved: ${newUser._id}`);
-    return newUser._id;
+    console.log(`New user is successfully saved: ${newUser.name}`);
+    return newUser
   } catch (err) {
     return null;
   }
@@ -35,21 +35,20 @@ const readUserById = async (id) => {
   try {
     const user = await User.findOne({ name: id });
     if (!user) {
-      const body = { id };
-      const newUser = await createUser(body);
+      const newUser = await createUser(id);
       return newUser;
     } else {
-      console.log(`User found: ${user._id}`);
-      return user;
+      return user
     }
   } catch (err) {
+    console.log(err);
     return null;
   }
 };
 
 const addCourse = async (id, courseId) => {
   try {
-    const user = await User.findById(id);
+    const user = await User.findOne({ name: id });
     user.courses.push(courseId);
     await user.save();
     return user;

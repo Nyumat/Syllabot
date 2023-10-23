@@ -30,8 +30,10 @@ export default function Manage() {
     }
   };
 
+  console.log(courses);
+
   useEffect(() => {
-     if (userId) fetchCourses();
+    if (userId) fetchCourses();
   }, [userId]);
 
   return (
@@ -75,22 +77,25 @@ export default function Manage() {
 
 function CourseInfo({ course }: { course: Course }) {
   const sections = [];
-  for (let i = 0; i < course.documents.length; i += 2) {
-    const section = course.documents.slice(i, i + 2);
+  for (let i = 0; i < course?.files!.length; i += 2) {
+    const section = course?.files?.slice(i, i + 2);
     sections.push(section);
   }
 
   return (
     <div className="col-span-2">
       <div className="text-4xl font-semibold text-start pl-8 mt-3 select-none">
-        {course.courseTitle}
+        {course.courseDetails?.courseTitle}
       </div>
       {sections.length > 0 && (
         <div className="mt-6 justify-center self-center">
           {sections.map((section, sectionIndex) => (
             <div key={sectionIndex} className="flex flex-row flex-wrap">
-              {section.map((doc, docIndex) => (
-                <FileManageBtn filename={doc.name} key={docIndex} />
+              {section?.map((doc, docIndex) => (
+                <FileManageBtn
+                  filename={doc.toString() + ".pdf"}
+                  key={docIndex}
+                />
               ))}
             </div>
           ))}

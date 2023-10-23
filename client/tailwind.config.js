@@ -23,6 +23,7 @@ export default {
             "10pc": "10%",
          },
          height: {
+            "55vh": "55vh",
             "60vh": "60vh",
             "65vh": "65vh",
             "70vh": "70vh",

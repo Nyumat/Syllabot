@@ -1,28 +1,27 @@
-import CourseBtn, { baseCSS, selectedCSS } from "../components/buttons/CourseBtn";
-import { FaPlus, FaList } from "react-icons/fa";
-import {
-  SignedIn,
-  SignedOut,
-  RedirectToSignIn,
-} from "@clerk/clerk-react";
-import { BiSolidChevronRight } from "react-icons/bi";
-import { Course } from "../data/types";
 import { useState } from "react";
+import { BiSolidChevronRight } from "react-icons/bi";
+import { FaList, FaPlus } from "react-icons/fa";
+import CourseBtn, {
+  baseCSS,
+  selectedCSS,
+} from "../components/buttons/CourseBtn";
+import { Course } from "../data/types";
 
 type CourseSidePanelType = {
   addCourseButton?: boolean;
   userClicked: (course: Course) => any;
   userClickedManageOrAdd: () => any;
-  courses?: Course[];
+  courses: any;
+  details: any;
 };
 
 export default function CourseSidePanel({
   addCourseButton,
   userClicked,
   userClickedManageOrAdd,
-  courses = [],
+  courses,
+  details,
 }: CourseSidePanelType) {
-  
   // const courses: Course[] = [
   //   {
   //     id: "1",
@@ -68,11 +67,11 @@ export default function CourseSidePanel({
 
   const handleGeneralSelected = () => {
     setIsSelect("General");
-  }
+  };
 
   return (
     <div className="col-span-1">
-      {!addCourseButton ?
+      {!addCourseButton ? (
         <div className="flex flex-col shadow-lg rounded-lg ml-8 mt-3 mb-5">
           <button
             className={isSelect == "General" ? selectedCSS : baseCSS}
@@ -80,20 +79,25 @@ export default function CourseSidePanel({
           >
             General Questions <BiSolidChevronRight />
           </button>
-        </div> : null
-      }
+        </div>
+      ) : null}
       <div className="text-3xl font-semibold text-start pl-8 select-none">
         Courses
       </div>
       <div className="flex flex-col shadow-lg rounded-lg ml-8 mt-3">
-        {courses.map((course) => (
-          <CourseBtn
-            id={course.id}
-            coursename={course.courseDetails.courseTitle} 
-            onClick={() => handleSelect(course)}
-            selectedId={isSelect}
-          />
-        ))}
+        {courses.map((course: any) => {
+          const detailsForCourseX = details.filter(
+            (detail: any) => detail._id == course.courseDetails
+          );
+          return (
+            <CourseBtn
+              id={course.id}
+              coursename={detailsForCourseX[0].courseTitle}
+              onClick={() => handleSelect(course)}
+              selectedId={isSelect}
+            />
+          );
+        })}
 
         {addCourseButton ? (
           <button

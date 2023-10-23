@@ -4,9 +4,7 @@ import { useEffect, useState} from "react";
 import { useAuth, useClerk, SignIn, useUser } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
 import CourseSidePanel from "../components/CourseSidePanel";
-import Presets from "../components/layout/Presets";
 import ChatBox from "../components/layout/ChatBox";
-import QueryBox from "../components/layout/QueryBox";
 import { Course } from "../data/types";
 // import { getToken } from "@chakra-ui/react";
 

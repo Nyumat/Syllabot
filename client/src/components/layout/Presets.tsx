@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { PresetType } from "../../data/types";
+import { ChatType } from "../../data/types";
 
 const numPresets = 4;
 
@@ -28,7 +27,11 @@ const data = [
    },
 ];
 
-export default function Presets() {
+interface QueryBoxProps {
+   addChat: (chatData: ChatType) => void;
+}
+
+export default function Presets({ addChat }: QueryBoxProps) {
    const sections = [];
    for (let i = 0; i < numPresets; i += 2) {
       const section = data.slice(i, i + 2);
@@ -36,7 +39,7 @@ export default function Presets() {
    }
 
    return (
-      <div className="mt-6 justify-center self-center w-4/5">
+      <div className="mt-6 justify-center self-center w-1/2 absolute bottom-20">
          {sections.map((section, sectionIndex) => (
             <div
                key={sectionIndex}
@@ -46,7 +49,7 @@ export default function Presets() {
                {/* Added mb-4 for spacing between rows */}
                {section.map((preset, docIndex) => (
                   <div key={docIndex} className="mr-4 w-4/5">
-                     <Preset name={preset.name} />
+                     <Preset name={preset.name} addChat={addChat} />
                   </div>
                ))}
             </div>
@@ -57,11 +60,24 @@ export default function Presets() {
 
 type PresetProps = {
    name: String;
+   addChat: (chatData: ChatType) => void;
 };
 
-function Preset({ name }: PresetProps) {
+function Preset({ name, addChat }: PresetProps) {
+   const handleClick = (name: String) => {
+      const chatData: ChatType = {
+         content: name,
+         isUser: true,
+      };
+      addChat(chatData);
+   };
    return (
-      <button className="rounded-lg bg-white cursor-pointer w-full shadow-md font-normal text-start pl-6 hover:bg-primary-orange hover:text-white hover:font-semibold active:bg-white active:text-black transition duration-200 ease-in-out p-3">
+      <button
+         className="rounded-lg bg-white cursor-pointer w-full shadow-md font-normal text-start pl-6 hover:bg-primary-orange hover:text-white hover:font-semibold active:bg-white active:text-black transition duration-200 ease-in-out p-3"
+         onClick={() => {
+            handleClick(name);
+         }}
+      >
          {name}
       </button>
    );

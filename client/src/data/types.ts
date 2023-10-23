@@ -23,3 +23,8 @@ export type Course = {
 export type PresetType = {
    name: String;
 };
+
+export type ChatType = {
+   content: String;
+   isUser: Boolean;
+};

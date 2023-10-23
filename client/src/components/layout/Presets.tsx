@@ -1,11 +1,11 @@
+import axios from "axios";
 import { ChatType } from "../../data/types";
 
 const numPresets = 4;
 
 const data = [
    {
-      name: "Show Office Hours",
-      promptForGPT: "Can you tell me the office hours for my class?",
+      name: "Can you tell me the office hours for my class?",
    },
    {
       name: "Can you tell me the grading info?",
@@ -16,20 +16,17 @@ const data = [
    {
       name: "Can you tell me any important information?",
    },
-   {
-      name: "Can you tell me any important information?",
-   },
-   {
-      name: "Can you tell me any important information?",
-   },
-   {
-      name: "Can you tell me any important information?",
-   },
 ];
 
 interface QueryBoxProps {
    addChat: (chatData: ChatType) => void;
 }
+
+type Response = {
+   data: {
+      message: String;
+   };
+};
 
 export default function Presets({ addChat }: QueryBoxProps) {
    const sections = [];
@@ -64,12 +61,44 @@ type PresetProps = {
 };
 
 function Preset({ name, addChat }: PresetProps) {
+   const sendQuery = (query: String) => {
+      const reqBody = { query: query };
+      axios
+         .request({
+            method: "get",
+            url: "http://localhost:8080/api/users/test", // Using test API right now
+            params: reqBody,
+         })
+         .then((response: Response) => {
+            console.log(response.data.message);
+            if (response.data.message.length != 0) {
+               const chatData: ChatType = {
+                  content: response.data.message,
+                  isUser: false,
+               };
+
+               addChat(chatData);
+            }
+         })
+         .catch((err: ErrorEvent) => {
+            console.log(err);
+            const chatData: ChatType = {
+               content:
+                  "Sorry, there was an issue. I don't know what you are saying.",
+               isUser: false,
+            };
+
+            return chatData;
+         });
+   };
+
    const handleClick = (name: String) => {
       const chatData: ChatType = {
          content: name,
          isUser: true,
       };
       addChat(chatData);
+      sendQuery(name);
    };
    return (
       <button

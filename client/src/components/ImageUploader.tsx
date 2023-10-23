@@ -20,16 +20,6 @@ interface ImageUploaderProps {
 }
 
 export default function ImageUploader(props: ImageUploaderProps) {
-<<<<<<< HEAD
-  const navigate = useNavigate();
-  const { userId } = useAuth();
-  const onDrop = (acceptedFiles: File[]) => {
-    const data = new FormData();
-    data.append("file", acceptedFiles[0]);
-    data.append("userId", userId as string);
-
-    props.setHasUploaded(true);
-=======
    const navigate = useNavigate();
    const onDrop = (acceptedFiles: File[]) => {
       const data = new FormData();
@@ -37,7 +27,6 @@ export default function ImageUploader(props: ImageUploaderProps) {
       data.append("userId", uuid());
       data.append("courseId", uuid());
       props.setHasUploaded(true);
->>>>>>> 80e74725da227161c29d19c2f8c8961d37eb95b5
 
       const port = 8080; // Replace with your server's port
       navigate("/processing");

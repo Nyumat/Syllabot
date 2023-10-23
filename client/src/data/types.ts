@@ -18,3 +18,8 @@ export type Document = {
 export type PresetType = {
    name: String;
 };
+
+export type ChatType = {
+   content: String;
+   isUser: Boolean;
+};

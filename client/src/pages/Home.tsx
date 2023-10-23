@@ -2,9 +2,7 @@ import NavBar from "../components/NavBar";
 import { useAuth, useClerk, SignIn } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
 import CourseSidePanel from "../components/CourseSidePanel";
-import Presets from "../components/layout/Presets";
 import ChatBox from "../components/layout/ChatBox";
-import QueryBox from "../components/layout/QueryBox";
 import { Course } from "../data/types";
 
 export default function Home() {

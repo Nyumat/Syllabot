@@ -60,3 +60,5 @@ const addCourse = async (id, courseId) => {
 
 export { addCourse, createUser, readUserById };
 
+
+export default User;

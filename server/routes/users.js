@@ -1,10 +1,10 @@
 import { Router } from "express";
 import mongoose from "mongoose";
-const { ObjectId } = mongoose.Types;
 import multer from 'multer';
 import Course from "../models/Course.js";
 import CourseDetails from '../models/CourseDetails.js';
 import User, { createUser, readUserById } from "../models/User.js";
+const { ObjectId } = mongoose.Types;
 const upload = multer({ dest: "uploads/" });
 const router = Router();
 
@@ -12,16 +12,16 @@ const router = Router();
 TEST API
 */
 router.get("/test", async (req, res, next) => {
-   try {
-      res.status(200).send({
-         message: "This is the test message from the server",
-      });
-   } catch (err) {
-      res.status(404).send({
-         ERROR: "Error: the page does not exist",
-      });
-      next();
-   }
+  try {
+    res.status(200).send({
+      message: "This is the test message from the server",
+    });
+  } catch (err) {
+    res.status(404).send({
+      ERROR: "Error: the page does not exist",
+    });
+    next();
+  }
 });
 
 /*
@@ -30,20 +30,20 @@ Create a new file entry
   Courses
 */
 router.post(
-   "/newFile",
-   upload.single("file"),
-   async (req, res, next) => {
-      try {
-         const filePath = req.file.path;
+  "/newFile",
+  upload.single("file"),
+  async (req, res, next) => {
+    try {
+      const filePath = req.file.path;
 
-         res.status(201).send({
-            message: "File uploaded successfully",
-         });
-      } catch (err) {
-         res.status(404).send({ ERROR: "Error getting the file" });
-         next();
-      }
-   }
+      res.status(201).send({
+        message: "File uploaded successfully",
+      });
+    } catch (err) {
+      res.status(404).send({ ERROR: "Error getting the file" });
+      next();
+    }
+  }
 );
 
 /*
@@ -152,33 +152,13 @@ router.get("/:userId/:courseId", async (req, res, next) => {
   try {
     user = await readUserById(userId);
   } catch (err) {
-    res.status(404).send({ ERROR: "Cannot found user" });
-    return;
+    return res.status(404).send({ ERROR: "Cannot found user" });
   }
 
   if (!user) {
     res.status(404).send({ ERROR: "Cannot found user" });
     return;
   }
-
-  res.status(200).send(user);
-  return;
-   const userId = req.params.userId;
-   var user = null;
-   try {
-      user = await readUserById(userId);
-   } catch (err) {
-      res.status(404).send({ ERROR: "Cannot found user" });
-      return;
-   }
-
-   if (!user) {
-      res.status(404).send({ ERROR: "Cannot found user" });
-      return;
-   }
-
-   res.status(200).send(user);
-   return;
 });
 
 /*
@@ -189,8 +169,7 @@ router.post("/:userId/:courseId/file", async (req, res, next) => {
   try {
     body = await integrationValidSchema.validateAsync(req.body);
   } catch (err) {
-    res.status(400).send({ ERROR: "Invalid body" });
-    return;
+    return res.status(400).send({ ERROR: "Invalid body" });
   }
 
   // Check if userId's type is ObjectId

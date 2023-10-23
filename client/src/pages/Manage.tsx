@@ -31,7 +31,7 @@ export default function Manage() {
   };
 
   useEffect(() => {
-     if (userId) fetchCourses();
+    if (userId) fetchCourses();
   }, [userId]);
 
   return (
@@ -41,7 +41,7 @@ export default function Manage() {
           <NavBar />
           <div className="grid grid-cols-3 gap-4">
             <div
-              className="text-4xl font-bold select-none col-span-1 mt-5 px-8"
+              className="text-4xl font-bold select-none col-span-1 mt-5 mb-5 px-8"
               style={{ justifySelf: "left" }}
             >
               Manage Your Classes
@@ -62,7 +62,7 @@ export default function Manage() {
               courses={courses}
               details={details}
             />
-            {selectedCourse ? <CourseInfo course={selectedCourse} /> : null}
+            {selectedCourse ? <CourseInfo course={selectedCourse} details={details}/> : null}
           </div>
         </div>
       </SignedIn>
@@ -73,24 +73,28 @@ export default function Manage() {
   );
 }
 
-function CourseInfo({ course }: { course: Course }) {
+function CourseInfo({ course, details }: { course: Course, details:any[] }) {
+  const detailForCourseX = details.filter((detail: any) => detail._id == course.courseDetails)[0]
+
   const sections = [];
-  for (let i = 0; i < course.documents.length; i += 2) {
-    const section = course.documents.slice(i, i + 2);
-    sections.push(section);
+  if (course.files) {
+    for (let i = 0; i < course.files.length ?? 0; i += 2) {
+      const section = course.files.slice(i, i + 2);
+      sections.push(section);
+    }
   }
 
   return (
     <div className="col-span-2">
       <div className="text-4xl font-semibold text-start pl-8 mt-3 select-none">
-        {course.courseTitle}
+        {detailForCourseX.courseTitle}
       </div>
       {sections.length > 0 && (
         <div className="mt-6 justify-center self-center">
           {sections.map((section, sectionIndex) => (
             <div key={sectionIndex} className="flex flex-row flex-wrap">
               {section.map((doc, docIndex) => (
-                <FileManageBtn filename={doc.name} key={docIndex} />
+                <FileManageBtn filename={doc.title} key={docIndex} />
               ))}
             </div>
           ))}
